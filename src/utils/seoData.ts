@@ -5,17 +5,20 @@ export const setSeoData = ({ seo }: { seo: Page["seo"] }) => {
 
   return {
     metadataBase: new URL(`${process.env.NEXT_PUBLIC_BASE_URL}`),
-    title: seo.title || "",
+    title: seo.title || "محورسازان ایران خودرو",
     description: seo.metaDesc || "",
+    icons: {
+      icon: "/favicon.ico",
+    },
     robots: {
       index: seo.metaRobotsNoindex === "index" ? true : false,
       follow: seo.metaRobotsNofollow === "follow" ? true : false,
     },
     openGraph: {
-      title: seo.opengraphTitle || "",
+      title: seo.opengraphTitle || "محورسازان ایران خودرو",
       description: seo.opengraphDescription || "",
       url: seo.opengraphUrl || "",
-      siteName: seo.opengraphSiteName || "",
+      siteName: seo.opengraphSiteName || "محورسازان ایران خودرو",
       images: [
         {
           url: seo.opengraphImage?.sourceUrl || "",
@@ -24,7 +27,7 @@ export const setSeoData = ({ seo }: { seo: Page["seo"] }) => {
           alt: seo.opengraphImage?.altText || "",
         },
       ],
-      locale: "da_DK",
+      locale: "fa_Ir",
       type: seo.opengraphType || "website",
     },
     twitter: {

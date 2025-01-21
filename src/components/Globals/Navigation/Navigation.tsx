@@ -1,60 +1,144 @@
-import Link from "next/link";
 import { print } from "graphql/language/printer";
-
-import styles from "./Navigation.module.css";
-
 import { MenuItem, RootQueryToMenuItemConnection } from "@/gql/graphql";
 import { fetchGraphQL } from "@/utils/fetchGraphQL";
 import gql from "graphql-tag";
+import Image from "next/image";
+import MenuLink from "@/components/Globals/Navigation/Menu";
+import Logo from "@/assets/logos/logo.png";
+import { headers } from "next/headers"; 
 
-async function getData() {
+type MenuItemWithChildren = MenuItem & {
+  children?: MenuItemWithChildren[];
+};
+
+async function getMenu() {
   const menuQuery = gql`
     query MenuQuery {
-      menuItems(where: { location: PRIMARY_MENU }) {
+      menuItems(
+        where: { location: PRIMARY_MENU }
+        first: 1000
+      ) {
         nodes {
+          id
           uri
           target
           label
+          parentId
         }
       }
     }
   `;
 
-  const { menuItems } = await fetchGraphQL<{
+  const response = await fetchGraphQL<{
     menuItems: RootQueryToMenuItemConnection;
   }>(print(menuQuery));
 
-  if (menuItems === null) {
-    throw new Error("Failed to fetch data");
+  if (!response || !response.menuItems) {
+    return null;
   }
 
-  return menuItems;
+  const buildMenuTree = (items: MenuItem[]): MenuItemWithChildren[] => {
+    const itemsById = new Map<string, MenuItemWithChildren>();
+    items.forEach(item => {
+      itemsById.set(item.id || '', { ...item, children: [] });
+    });
+
+    const rootItems: MenuItemWithChildren[] = [];
+
+    items.forEach(item => {
+      const menuItem = itemsById.get(item.id || '');
+      if (!menuItem) return;
+
+      if (item.parentId && itemsById.get(item.parentId)) {
+        const parent = itemsById.get(item.parentId);
+        if (parent) {
+          parent.children = parent.children || [];
+          parent.children.push(menuItem);
+        }
+      } else {
+        rootItems.push(menuItem);
+      }
+    });
+
+    return rootItems;
+  };
+
+  const hierarchicalMenu = buildMenuTree(response.menuItems.nodes);
+  return hierarchicalMenu;
 }
 
 export default async function Navigation() {
-  const menuItems = await getData();
+  const menuItems = await getMenu();
+  const headersList = await headers();
+  const url = headersList.get('x-route');
 
   return (
-    <nav
-      className={styles.navigation}
-      role="navigation"
-      itemScope
-      itemType="http://schema.org/SiteNavigationElement"
-    >
-      {menuItems.nodes.map((item: MenuItem, index: number) => {
-        if (!item.uri) return null;
-
-        return (
-          <Link
-            itemProp="url"
-            href={item.uri}
-            key={index}
-            target={item.target || "_self"}
-          >
-            <span itemProp="name">{item.label}</span>
-          </Link>
-        );
-      })}
-    </nav>
+    <>
+      <div className="
+        flex 
+        flex-wrap 
+        items-center 
+        lg:justify-between
+        justify-center 
+        w-full 
+        lg:w-3/4 
+        m-auto
+      ">
+        <div className="relative inline-block drop-shadow-lg">
+          <div className="
+            hexagon 
+            relative
+            z-10
+            bg-gray-100 
+            w-[175px] 
+            h-[175px] 
+            mx-auto 
+            lg:mx-4 
+            mb-6 
+            lg:mb-0 
+            flex 
+            items-center 
+            justify-center
+          ">
+            <Image
+              className="mt-2"
+              src={Logo}
+              alt={"Mehvar Sazan Iran Khodro Logo"}
+              quality={100}
+              width={70}
+            />
+          </div>
+        </div>
+        <nav
+          className="
+            relative
+            z-10
+            w-full
+            lg:flex-1
+            none 
+            lg:flex 
+            items-center 
+            justify-between 
+            bg-gradient-to-b 
+            from-gray-50 
+            to-gray-200 
+            drop-shadow-md
+            rounded-xl 
+            !py-0 
+            !px-8 
+            mb-6 
+            lg:mb-0
+            shadow-[2px_2px_2px_rgba(0,0,0,.1)]
+          "
+          role="navigation"
+          itemScope
+          itemType="http://schema.org/SiteNavigationElement"
+        >
+          {menuItems?.map((item: MenuItemWithChildren) => (
+            <MenuLink key={item.id} item={item} />
+          ))}
+        </nav>
+      </div>
+    </>
   );
 }

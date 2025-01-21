@@ -1,0 +1,115 @@
+@import "tailwindcss/base"; 
+@import "tailwindcss/components"; 
+@import "tailwindcss/utilities";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'IranYekanUltraLight';
+  src: url('/fonts/iranyekan/woff2/IRANYekanX-UltraLight.woff2') format('woff2'),
+       url('/fonts/iranyekan/woff/IRANYekanX-UltraLight.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'IranYekanLight';
+  src: url('/fonts/iranyekan/woff2/IRANYekanX-Light.woff2') format('woff2'),
+       url('/fonts/iranyekan/woff/IRANYekanX-Light.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'IranYekanThin';
+  src: url('/fonts/iranyekan/woff2/IRANYekanX-Thin.woff2') format('woff2'),
+       url('/fonts/iranyekan/woff/IRANYekanX-Thin.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'IranYekanRegular';
+  src: url('/fonts/iranyekan/woff2/IRANYekanX-Regular.woff2') format('woff2'),
+       url('/fonts/iranyekan/woff/IRANYekanX-Regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'IranYekanMedium';
+  src: url('/fonts/iranyekan/woff2/IRANYekanX-Medium.woff2') format('woff2'),
+       url('/fonts/iranyekan/woff/IRANYekanX-Medium.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'IranYekanDemiBold';
+  src: url('/fonts/iranyekan/woff2/IRANYekanX-DemiBold.woff2') format('woff2'),
+       url('/fonts/iranyekan/woff/IRANYekanX-DemiBold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'IranYekanBold';
+  src: url('/fonts/iranyekan/woff2/IRANYekanX-Bold.woff2') format('woff2'),
+       url('/fonts/iranyekan/woff/IRANYekanX-Bold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'IranYekanExtraBold';
+  src: url('/fonts/iranyekan/woff2/IRANYekanX-ExtraBold.woff2') format('woff2'),
+       url('/fonts/iranyekan/woff/IRANYekanX-ExtraBold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'IranYekanBlack';
+  src: url('/fonts/iranyekan/woff2/IRANYekanX-Black.woff2') format('woff2'),
+       url('/fonts/iranyekan/woff/IRANYekanX-Black.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'IranYekanExtraBlack';
+  src: url('/fonts/iranyekan/woff2/IRANYekanX-ExtraBlack.woff2') format('woff2'),
+       url('/fonts/iranyekan/woff/IRANYekanX-ExtraBlack.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'IranYekanHeavy';
+  src: url('/fonts/iranyekan/woff2/IRANYekanX-Heavy.woff2') format('woff2'),
+       url('/fonts/iranyekan/woff/IRANYekanX-Heavy.woff') format('woff');
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  direction: rtl;
+}
+
+body {
+  font-family: 'IranYekanRegular', sans-serif;
+}
+
+body, a, div, p, span, label {
+  font-family: 'IranYekanRegular', sans-serif;
+}
+
+b {
+  font-family: 'IranYekanBold', sans-serif;
+}
+
+strong {
+  font-family: 'IranYekanBold', sans-serif;
+}
+
+h1, h2 {
+  font-family: 'IranYekanBlack', sans-serif;
+}
+
+.ltr {
+  direction: ltr;
+}
+
+.text-demi-bold {
+  font-family: 'IranYekanDemiBold', sans-serif;
+}
+
+.text-bold {
+  font-family: 'IranYekanBold', sans-serif;
+}
