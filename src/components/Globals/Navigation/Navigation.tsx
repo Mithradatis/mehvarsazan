@@ -5,7 +5,6 @@ import gql from "graphql-tag";
 import Image from "next/image";
 import MenuLink from "@/components/Globals/Navigation/Menu";
 import Logo from "@/assets/logos/logo.png";
-import { headers } from "next/headers"; 
 
 type MenuItemWithChildren = MenuItem & {
   children?: MenuItemWithChildren[];
@@ -69,8 +68,6 @@ async function getMenu() {
 
 export default async function Navigation() {
   const menuItems = await getMenu();
-  const headersList = await headers();
-  const url = headersList.get('x-route');
 
   return (
     <>
