@@ -14,7 +14,7 @@ const SubMenuItem = ({
   
     return (
       <div className="menu-item w-full group/submenu">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between relative">
           <Link
             href={item.uri || '#'}
             className="
@@ -47,6 +47,12 @@ const SubMenuItem = ({
                 hover:bg-dark-800 
                 rounded 
                 cursor-pointer
+                absolute
+                flex
+                items-center
+                justify-end
+                w-full
+                h-full
             ">
               <svg 
                 className="
@@ -77,7 +83,7 @@ const SubMenuItem = ({
               hidden 
               peer-checked:block 
               pr-2 border-r 
-              border-slate-500 
+              border-slate-600 
               mr-2 
               mt-1
             ">

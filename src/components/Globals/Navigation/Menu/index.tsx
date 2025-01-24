@@ -33,7 +33,6 @@ const MenuLink = ({ item }: { item: MenuItemWithChildren }) => {
           <div 
             className="
               hidden
-               
               absolute 
               top-full
               right-0

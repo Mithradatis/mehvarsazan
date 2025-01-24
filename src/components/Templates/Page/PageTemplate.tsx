@@ -6,6 +6,7 @@ import ReactHtmlParser from "react-html-parser";
 import BlockRenderer from "@/components/Globals/BlockRenderer";
 
 import SocialIcons from "@/components/Globals/SocialIcons";
+import ContactWidget from "@/components/Widgets/ContactWidget";
 
 interface TemplateProps {
   node: ContentNode;
@@ -18,7 +19,6 @@ export default async function PageTemplate({ node }: TemplateProps) {
       id: node.databaseId,
     }
   );
-  // const images = extractBlockFromBlocks(page.blocks, 'gallery');
 
   return <div className="
     flex 
@@ -90,27 +90,13 @@ export default async function PageTemplate({ node }: TemplateProps) {
       border-r 
       border-dashed 
       border-slate-300 
-      p-20
+      py-20
+      px-10
       hidden
       lg:block
     ">
       <div className="sticky top-[30px]">
-        <div className="
-          mt-28
-          text-2xl
-          text-slate-800 
-          w-3/4
-          p-8
-          rounded-2xl
-          bg-gradient-to-br
-          from-blue-100
-          to-blue-50
-          shadow-[-6px_-6px_10px_-1px_#fff,2px_2px_3px_-1px_rgba(34,34,34,0.1)]
-        ">
-          <span className="text-demi-bold">
-            اطلاعات تماس
-          </span>
-        </div>
+        <ContactWidget />
       </div>
     </div>
   </div>;

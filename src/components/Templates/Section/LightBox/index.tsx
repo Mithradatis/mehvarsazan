@@ -37,7 +37,7 @@ const LightBox = async () => {
     return (
         <div className="flex xl:flex-row lg:flex-row md:flex-col flex-col items-center justify-center md:px-0 px-4">
             <div className="md:mr-[15%] md:text-right text-center mx-auto flex-1 min-w-1/2">
-                <h1 className="md:text-7xl text-6xl text-white font-bold animate__animated animate__bounceInRight">
+                <h1 className="md:text-7xl text-6xl text-white font-bold animate__animated animate__bounceInRight beveled-title">
                     محورسازان<br />
                     ایران خودرو
                 </h1>

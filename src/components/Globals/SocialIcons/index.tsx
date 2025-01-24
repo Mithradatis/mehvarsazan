@@ -1,5 +1,7 @@
 import { RiFacebookFill } from "react-icons/ri";
 import { FaLinkedinIn } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa";
+import { FaTelegram } from "react-icons/fa";
 
 import Link from "next/link";
 
@@ -17,12 +19,12 @@ const SocialIcons = () => {
         },
         {
             title: "Twitter",
-            icon: <RiFacebookFill />,
+            icon: <FaInstagram />,
             link: "#"
         },
         {
             title: "Telegram",
-            icon: <RiFacebookFill />,
+            icon: <FaTelegram />,
             link: "#"
         }
     ]

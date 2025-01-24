@@ -109,7 +109,7 @@ export default async function Navigation() {
         <nav
           className="
             relative
-            z-40
+            z-50
             w-full
             lg:flex-1
             none 
@@ -124,7 +124,7 @@ export default async function Navigation() {
             !px-8 
             mb-6 
             lg:mb-0
-            shadow-[2px_2px_2px_rgba(0,0,0,.1)]
+            shadow-[1px_1px_4px_rgba(0,0,0,.25)]
           "
           role="navigation"
           itemScope

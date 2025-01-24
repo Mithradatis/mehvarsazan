@@ -116,14 +116,7 @@ const LastNews = async () => {
                                     relative 
                                     z-20
                                     h-48 
-                                    overflow-hidden 
-                                    before:absolute
-                                    before:z-20
-                                    before:w-full 
-                                    before:h-full 
-                                    before:bg-red-500 
-                                    before:top-[5px] 
-                                    before:left-[5px]
+                                    overflow-hidden
                                     ${ index !== 0 ? index !== 2 ? 'md:rounded-2xl' : 'md:rounded-bl-2xl' : 'md:rounded-br-2xl' }`
                                 }>
                                     <div className="
