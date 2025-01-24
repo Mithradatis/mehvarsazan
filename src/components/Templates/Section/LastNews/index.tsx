@@ -5,6 +5,7 @@ import { getThumbnailUrl } from "@/utils/imageHandler";
 import { getPersianDate } from "@/utils/dateTimeHandler";
 import Link from "next/link";
 import Image from "next/image";
+import BeveledLabel from "@/components/Globals/BeveledLabel";
 
 interface Post {
     node: {
@@ -74,12 +75,14 @@ const LastNews = async () => {
                     to-transparent
                 "
             >
-        <div className="container mx-auto relative">
-            <div className="flex flex-col items-center justify-center">
-                <div className="dashed-line mx-auto"></div>
+        <div className="container mx-auto relative md:px-0 px-4">
+            <div className="flex flex-col items-center justify-center md:min-h-[200px] mx-auto">
+                <div className="dashed-line mx-auto has-arrow-before"></div>
                 <h3 className="
+                    h-[5rem]
                     mt-2
-                    absolute 
+                    md:absolute
+                    relative 
                     inline-flex 
                     mx-auto 
                     font-bold 
@@ -101,15 +104,31 @@ const LastNews = async () => {
                     after:h-1
                     after:bg-[#7fc1e4]
                 ">
-                    آخرین اخبار
+                    <BeveledLabel label={"آخرین اخبار"} />
                 </h3>
             </div>
-            <div className="flex flex-wrap items-start justify-center gap-12 w-full lg:w-3/4 mx-auto relative">
+            <div className="flex flex-wrap items-start justify-center md:gap-12 gap-6 w-full lg:w-3/4 mx-auto relative">
                 {
                     posts.map(async (post: Post, index: number) => {
-                        return <div className={`w-full lg:flex-1 card rounded-2xl overflow-hidden ${index !== 1 ? 'mt-12' : ''}`} key={post.node.id}>
+                        return <div className={`w-full lg:flex-1 card rounded-2xl overflow-hidden ${index !== 1 ? 'md:mt-12' : ''}`} key={post.node.id}>
                             <Link href={post.node.slug}>
-                                <div className={`relative h-48 overflow-hidden ${ index !== 0 ? index !== 2 ? 'rounded-2xl' : 'rounded-bl-2xl' : 'rounded-br-2xl' }`}>
+                                <div className={`
+                                    relative 
+                                    z-20
+                                    h-48 
+                                    overflow-hidden 
+                                    before:absolute
+                                    before:z-20
+                                    before:w-full 
+                                    before:h-full 
+                                    before:bg-red-500 
+                                    before:top-[5px] 
+                                    before:left-[5px]
+                                    ${ index !== 0 ? index !== 2 ? 'md:rounded-2xl' : 'md:rounded-bl-2xl' : 'md:rounded-br-2xl' }`
+                                }>
+                                    <div className="
+                                        
+                                    "></div>
                                     <Image
                                         src={
                                             await getThumbnailUrl(
@@ -124,9 +143,10 @@ const LastNews = async () => {
                                         height={200}
                                         quality={100}
                                         style={{ width: '100%', height: 'auto' }}
+                                        className="relative z-20"
                                     />
                                 </div>
-                                <div className={`w-[calc(100%-1rem)] p-4 border border-t-0 border-1 border-cyan-400 bg-slate-50 rounded-br-2xl rounded-bl-2xl ${ index !== 0 ? index !== 2 ? 'mx-auto' : 'ml-auto' : 'mr-auto' }`}>
+                                <div className={`md:w-[calc(100%-1rem)] w-full p-4 border border-t-0 border-1 border-cyan-400 bg-slate-50 rounded-br-2xl rounded-bl-2xl ${ index !== 0 ? index !== 2 ? 'md:mx-auto' : 'md:ml-auto' : 'md:mr-auto' }`}>
                                     <h4 className="mb-4 text-justify">
                                         {
                                             post.node.title

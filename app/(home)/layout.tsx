@@ -1,6 +1,7 @@
 
 import { draftMode } from "next/headers";
-import { Inter } from "next/font/google";
+import { Suspense } from "react";
+import "animate.css";
 
 import "@/app/globals.css";
 import "@/app/globals.scss";
@@ -10,7 +11,8 @@ import Header from "@/components/Partials/Header/HomeHeader";
 import Footer from "@/components/Partials/Footer";
 import Modal from "@/components/Partials/Modal";
 
-const inter = Inter({ subsets: ["latin"] });
+import { ModalProvider } from "@/hooks/useModal";
+import Loading from "@/components/Globals/Loading";
 
 export default async function RootLayout({
   children
@@ -22,13 +24,17 @@ export default async function RootLayout({
   return (
     <html lang="fa" dir="rtl">
       <body>
-        {isEnabled && <PreviewNotice />}
-        <Modal />
-        <Header />
-        <main className="py-20">
-          {children}
-        </main>
-        <Footer />
+        <Suspense fallback={<Loading />}>
+          <ModalProvider>
+            {isEnabled && <PreviewNotice />}
+            <Modal />
+            <Header />
+            <main className="py-20">
+              {children}
+            </main>
+            <Footer />
+          </ModalProvider>
+        </Suspense>
       </body>
     </html>
   );

@@ -84,6 +84,7 @@ html {
 
 body {
   font-family: 'IranYekanRegular', sans-serif;
+  overflow-x: hidden;
 }
 
 body, a, div, p, span, label {

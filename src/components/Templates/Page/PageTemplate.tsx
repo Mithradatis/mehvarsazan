@@ -33,14 +33,17 @@ export default async function PageTemplate({ node }: TemplateProps) {
       lg:py-16 
       md:py-8 
       sm:p-0
+      mx-auto
     ">
       <div className="
           flex 
-          flex-col 
+          lg:flex-col
+          flex-row 
           items-end 
           sticky 
           top-[30px] 
-          py-32 
+          lg:py-32 
+          py-8
           gap-6
         ">
         <SocialIcons />
@@ -56,7 +59,7 @@ export default async function PageTemplate({ node }: TemplateProps) {
     ">
       <div className="flex flex-wrap">
         <div className="flex-auto w-full">
-          <div className="p-12">
+          <div className="md:p-12 p-6">
             <h1 className="
               text-5xl 
               text-bold 
@@ -88,6 +91,8 @@ export default async function PageTemplate({ node }: TemplateProps) {
       border-dashed 
       border-slate-300 
       p-20
+      hidden
+      lg:block
     ">
       <div className="sticky top-[30px]">
         <div className="

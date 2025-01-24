@@ -32,11 +32,11 @@ const Introduction = async () => {
     const content = await getWidget();
 
     return <section className="container mx-auto relative z-10">
-        <div className="flex flex-wrap items-start justify-between">
+        <div className="flex flex-wrap items-start justify-between md:px-0 px-4 py-12 md:py-0">
             <div className="w-full lg:flex-1">
                 <div className={`
-                    mt-24
-                    history 
+                    relative
+                    mt-24 
                     text-lg 
                     text-justify
                     w-full 
@@ -44,27 +44,38 @@ const Introduction = async () => {
                     text-gray-500
                     mr-auto 
                     lg:mr-[25%] 
-                    p-10 
+                    p-10
                     bg-gradient-to-b 
                     from-transparent 
                     from-0% 
-                    via-lightBlue 
+                    via-ultraLightBlue 
                     via-90% 
-                    to-lightBlue 
+                    to-ultraLightBlue 
                     to-100% 
                     rounded-xl 
-                    shadow`
-                }>
+                    shadow
+                    md:before:absolute
+                    md:before:top-[-1.5rem]
+                    md:before:right-[-1.5rem]
+                    md:before:w-[5rem]
+                    md:before:h-[5rem]
+                    md:before:rounded-tr-[1.2rem]
+                    md:before:border-t-4
+                    md:before:border-r-4
+                    md:before:border-t-[#3F74E6]
+                    md:before:border-r-[#3F74E6]
+                `}
+            >
                     {parseHTML(content.content)}
                 </div>
             </div>
-            <div className="w-full lg:flex-1 m-auto mt-16 flex flex-wrap items-start justify-center">
+            <div className="w-full xl:flex-1 m-auto mt-16 flex-wrap items-start justify-center hidden xl:flex">
                 <Image
                     width={500}
                     src={AxlesImage}
                     alt={"axles"}
                     quality={100}
-                    className={"absolute pt-3"}
+                    className={"md:absolute relative md:pt-12"}
                 />
             </div>
         </div>

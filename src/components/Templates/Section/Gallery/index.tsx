@@ -5,6 +5,8 @@ import { getThumbnailUrl } from "@/utils/imageHandler";
 import { extractBlockFromBlocks } from "@/utils/blocksHandler";
 import Image from "next/image";
 import LogoSimple from "@/assets/logos/logo-simple.png";
+import GalleryBackgroundImage from "@/assets/backgrounds/geometric-shapes.png";
+import BeveledLabel from "@/components/Globals/BeveledLabel";
 
 async function getGalleryImages() {
     const GalleryImagesQuery = gql`
@@ -60,12 +62,37 @@ const Gallery = async () => {
     const images = extractBlockFromBlocks(gallery.blocks, 'gallery');
     const thumbnails = await fetchThumbnails(images);
 
-    return <section id="gallery" className="relative">
-        <div className="container mx-auto relative">
-            <div className="dashed-line absolute left-1/2 mt-[-3rem] has-arrow-after none md:block"></div>
-            <div className="relative pt-[200px]">
+    return <section
+        id="gallery"
+        className="relative"
+    >
+        <div className="
+            container 
+            mx-auto 
+            relative 
+            md:px-0 
+            px-4
+            before:absolute
+            before:z-1
+            before:top-[-15%]
+            lg:before:left-[15%]
+            before:left-0
+            lg:before:w-[70%]
+            before:w-full
+            before:h-[130%]
+            before:bg-[url(/assets/background/geometric-shapes.png)]
+            before:bg-no-repeat
+            before:bg-center
+            before:bg-contain
+            before:-z-10"
+        >
+            <div className="hidden lg:block h-[200px] mb-4">
+                <div className="dashed-line mx-auto mt-[-3rem] has-arrow-after hidden md:block"></div>
+            </div>
+            <BeveledLabel label={"گالری تصاویر"} />
+            <div className="relative pt-12">
                 <div className="relative flex flex-wrap items-start justify-center gap-[20px] md:gap-12 w-full md:w-2/3 mx-auto ltr">
-                    <div className="*
+                    <div className="
                         absolute 
                         z-20
                         top-[50%] 

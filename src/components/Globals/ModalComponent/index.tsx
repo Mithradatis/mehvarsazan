@@ -2,7 +2,8 @@
 
 import React, { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
-import useModal from '@/hooks/useModal';
+import { useModal } from '@/hooks/useModal';
+import { CiCircleRemove } from "react-icons/ci";
 
 const ModalComponent = ({children}: {children: any}) => {
   const [mounted, setMounted] = useState(false);
@@ -24,7 +25,7 @@ const ModalComponent = ({children}: {children: any}) => {
   useEffect(() => {
     const handleEscape = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
-        // onClose();
+        modalState.onClose();
       }
     };
 
@@ -39,7 +40,7 @@ const ModalComponent = ({children}: {children: any}) => {
 
   const handleBackdropClick = (event: React.MouseEvent) => {
     if (event.target === event.currentTarget) {
-    //   onClose();
+      modalState.onClose();
     }
   };
 
@@ -47,13 +48,22 @@ const ModalComponent = ({children}: {children: any}) => {
 
   const modal = (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
+      className="
+        fixed 
+        inset-0 
+        z-50 
+        flex 
+        items-center 
+        justify-center 
+        bg-black/50 
+        backdrop-blur-sm
+      "
       onClick={handleBackdropClick}
       role="dialog"
       aria-modal="true"
       aria-labelledby={modalState.title ? "modal-title" : undefined}
     >
-      <div className="relative w-full max-w-lg bg-white rounded-lg shadow-xl m-4">
+      <div className="relative w-full min-w-[50%] max-w-lg bg-white rounded-lg shadow-xl m-4">
         <div className="flex items-center justify-between p-4 border-b">
           {modalState.title && (
             <h2 id="modal-title" className="text-xl font-semibold">
@@ -63,8 +73,9 @@ const ModalComponent = ({children}: {children: any}) => {
           <button
             className="p-1 hover:bg-gray-100 rounded-full transition-colors"
             aria-label="Close modal"
+            onClick={modalState.onClose}
           >
-            x
+            <CiCircleRemove fontSize={36} />
           </button>
         </div>
         <div className="p-4">

@@ -112,7 +112,7 @@ export default async function Navigation() {
         <nav
           className="
             relative
-            z-10
+            z-40
             w-full
             lg:flex-1
             none 
@@ -121,8 +121,7 @@ export default async function Navigation() {
             justify-between 
             bg-gradient-to-b 
             from-gray-50 
-            to-gray-200 
-            drop-shadow-md
+            to-gray-200
             rounded-xl 
             !py-0 
             !px-8 

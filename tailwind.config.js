@@ -7,7 +7,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'lightBlue': 'rgba(61, 165, 214, .05)'
+        'ultraLightBlue': 'rgba(61, 165, 214, .05)',
+        'lightBlue': '#7FC1E4'
       },
     },
   },

@@ -8,8 +8,6 @@ import { ContentNode, Page } from "@/gql/graphql";
 import { PageQuery } from "@/components/Templates/Page/PageQuery";
 import { SeoQuery } from "@/queries/general/SeoQuery";
 
-import NotFoundLayout from "@/app/not-found-layout";
-
 const notFoundPageWordPressId = 501;
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -45,8 +43,8 @@ export default async function NotFound() {
   });
   if (!page) {
     // Handle the case where the page data is not found
-    return <NotFoundLayout><p>The page you are looking for does not exist.</p></NotFoundLayout>;
+    return <p>The page you are looking for does not exist.</p>;
   }
 
-  return <NotFoundLayout>{page.content || "Page content is missing."}</NotFoundLayout>;
+  return (page.content || "Page content is missing.");
 }

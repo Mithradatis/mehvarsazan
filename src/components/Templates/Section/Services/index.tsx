@@ -14,47 +14,53 @@ const Services = () => {
             id: 'service-1',
             icon: ConferenceIcon,
             title: 'سالن همایش',
-            link: ''
+            link: 'سالن-همایش',
+            target: '_self'
         },
         {
             id: 'service-2',
             icon: AnnouncementsIcon,
             title: 'اطلاعیه‌ها',
-            link: ''
+            link: 'اطلاعیه‌ها',
+            target: '_self'
         },
         {
             id: 'service-3',
             icon: BidsIcon,
             title: 'مزایدات و مناقصات',
-            link: ''
+            link: 'مزایدات-و-مناقصات',
+            target: '_self'
         },
         {
             id: 'service-4',
             icon: OnlineShopIcon,
             title: 'فروشگاه اینترنتی',
-            link: ''
+            link: 'https://eikamco.ir/',
+            target: '_blank'
         },
         {
             id: 'service-5',
             icon: MarketingIcon,
             title: 'بازاریابی و فروش',
-            link: ''
+            link: 'بازاریابی-و-فروش',
+            target: '_self'
         },
         {
             id: 'service-6',
             icon: LabIcon,
             title: 'آزمایشگاه',
-            link: 'آزمایشگاه'
+            link: 'آزمایشگاه',
+            target: '_self'
         },
     ];
 
     return <section className="relative bg-gray-100">
-        <div className="container mx-auto relative">
+        <div className="container mx-auto relative px-4 md:px-0">
             <div className="has-connection">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 350 250"
-                    className="absolute left-0 w-1/2"
+                    className="md:absolute relative left-0 w-1/2 hidden md:block"
                 >
                     <defs>
                         <path id="path3" strokeWidth="2" strokeLinecap="round"
@@ -71,10 +77,14 @@ const Services = () => {
                 </svg>
                 <Image
                     className="
-                        min-w-[350px] 
-                        absolute 
-                        left-[15%] 
-                        top-[-35px]
+                        md:absolute
+                        relative
+                        mx-auto
+                        md:min-w-[350px]
+                        md:max-w-auto
+                        max-w-[75%]
+                        md:left-[15%] 
+                        md:top-[-35px]
                         drop-shadow-[2px_4px_6px_rgba(34,34,34,.25)]
                     "
                     src={CarManufacturerImage}
@@ -88,16 +98,25 @@ const Services = () => {
                     relative
                     z-10 
                     mx-auto 
-                    left-[210px] 
-                    flex flex-col 
-                    w-[36rem]
+                    md:left-[210px] 
+                    flex 
+                    flex-col 
+                    md:w-[36rem]
+                    w-full
                 ">
-                    <div className="grid grid-cols-3 gap-10 pt-2">
+                    <div className="grid md:grid-cols-3 grid-cols-2 md:gap-10 gap-4 pt-2">
                         {
-                            services.map(item => <Link href={item.link} key={item.id}>
+                            services.map(item => 
+                            <Link 
+                                href={item.link} 
+                                target={item.target} 
+                                key={item.id}
+                            >
                                 <div className="
-                                    w-40 
-                                    h-40 
+                                    sm:w-40 
+                                    sm:h-40 
+                                    w-30
+                                    h-30
                                     p-4 
                                     flex 
                                     flex-col 
@@ -116,7 +135,7 @@ const Services = () => {
                                         alt={item.title}
                                         quality={100}
                                     />
-                                    <h4 className="mt-2 text-slate-500">
+                                    <h4 className="mt-2 text-slate-700">
                                         {
                                             item.title
                                         }
@@ -130,7 +149,7 @@ const Services = () => {
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 350 250"
-                    className="absolute right-0 top-0 w-1/2"
+                    className="absolute right-0 top-0 w-1/2 hidden md:block"
                 >
                     <defs>
                         <path id="path4" strokeWidth="2" strokeLinecap="round"

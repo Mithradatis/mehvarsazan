@@ -1,6 +1,5 @@
 
 import { draftMode } from "next/headers";
-import { Inter } from "next/font/google";
 
 import "@/app/globals.css";
 import "@/app/globals.scss";
@@ -8,8 +7,6 @@ import "@/app/globals.scss";
 import { PreviewNotice } from "@/components/Globals/PreviewNotice/PreviewNotice";
 import Header from "@/components/Partials/Header/PageHeader";
 import Footer from "@/components/Partials/Footer";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export default async function RootLayout({
   children
@@ -21,7 +18,7 @@ export default async function RootLayout({
   return (
     <html lang="fa" dir="rtl">
       <body 
-        className={`${inter.className} flex flex-col`} 
+        className="flex flex-col" 
         style={{ minHeight: '100vh' }}
       >
         {isEnabled && <PreviewNotice />}
