@@ -35,9 +35,9 @@ const LightBox = async () => {
     const content = await getWidget();
 
     return (
-        <div className="flex xl:flex-row lg:flex-row md:flex-col flex-col items-center justify-center md:px-0 px-4">
-            <div className="md:mr-[15%] md:text-right text-center mx-auto flex-1 min-w-1/2">
-                <h1 className="md:text-7xl text-6xl text-white font-bold animate__animated animate__bounceInRight beveled-title">
+        <section className="flex xl:flex-row lg:flex-row md:flex-col flex-col items-center justify-center md:px-0 px-4">
+            <div className="xl:mr-[15%] lg:text-right text-center mx-auto flex-1 min-w-1/2 px-0 md:px-4">
+                <h1 className="xl:text-7xl lg:text-7xl md:text-5xl text-6xl text-white font-bold animate__animated animate__bounceInRight beveled-title">
                     محورسازان<br />
                     ایران خودرو
                 </h1>
@@ -65,8 +65,10 @@ const LightBox = async () => {
                             className={`
                                 relative 
                                 left-[20px]
-                                sm:left-[20px] 
-                                lg:left-[50px] 
+                                sm:left-[50px] 
+                                md:left-[0]
+                                lg:left-[30px]
+                                xl:left-[50px] 
                                 bottom-[-80px] 
                                 lg:bottom-[-81px] 
                                 z-[3]
@@ -83,7 +85,7 @@ const LightBox = async () => {
                     </MotionWrapper>
                 </div>
                 <div
-                    className="scene w-[90%] sm:w-full md:w-full lg:w-[600px] h-[100px] ml-0 mr-auto relative"
+                    className="scene w-[90%] sm:w-full md:w-[120%] lg:w-[500px] xl:w-[600px] h-[100px] ml-0 mr-auto relative"
                     style={{
                         perspective: '800px'
                     }}
@@ -112,10 +114,10 @@ const LightBox = async () => {
                         <div className="
                             absolute 
                             flex 
-                            lg:w-[82px]
-                            md:w-[82px]
-                            sm:w-[82px]
                             w-[38px]
+                            sm:w-[44px]
+                            md:w-[83px]
+                            lg:w-[83px]
                             h-[200px]
                             top-[40px]
                             md:left-[13px]
@@ -124,6 +126,7 @@ const LightBox = async () => {
                             md:skew-y-[40deg]
                             skew-y-[60deg]
                             origin-left-top
+                            rounded-tl-[3px]
                             z-20"
                         ></div>
                         <div className="
@@ -133,8 +136,8 @@ const LightBox = async () => {
                             px-8 
                             lg:px-16 
                             w-[98%] 
-                            sm:w-[98.3%]
-                            md:w-[98.3%]
+                            sm:w-[98.5%]
+                            md:w-[98.5%]
                             h-[200px]
                             top-[70px]
                             left-[46px]
@@ -150,7 +153,7 @@ const LightBox = async () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     );
 };
 

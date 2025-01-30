@@ -31,12 +31,13 @@ async function getWidget() {
 const Introduction = async () => {
     const content = await getWidget();
 
-    return <section className="container mx-auto relative z-10">
-        <div className="flex flex-wrap items-start justify-between md:px-0 px-4 py-12 md:py-0">
+    return <section className="2xl:container mx-auto relative z-10">
+        <div className="flex flex-wrap items-start justify-between md:px-0 px-4 py-12 xl:py-12 2xl:py-0">
             <div className="w-full lg:flex-1">
                 <div className={`
                     relative
-                    mt-24 
+                    lg:mt-24
+                    mt-20 
                     text-lg 
                     text-justify
                     w-full 
@@ -63,19 +64,20 @@ const Introduction = async () => {
                     md:before:border-t-4
                     md:before:border-r-4
                     md:before:border-t-[#3F74E6]
-                    md:before:border-r-[#3F74E6]
-                `}
-            >
-                    {parseHTML(content.content)}
+                    md:before:border-r-[#3F74E6]`}
+                >
+                    {
+                        parseHTML(content.content)
+                    }
                 </div>
             </div>
             <div className="w-full xl:flex-1 m-auto mt-16 flex-wrap items-start justify-center hidden xl:flex">
                 <Image
-                    width={500}
+                    width={550}
                     src={AxlesImage}
                     alt={"axles"}
                     quality={100}
-                    className={"md:absolute relative md:pt-12"}
+                    className={"md:absolute relative lg:mt-12"}
                 />
             </div>
         </div>

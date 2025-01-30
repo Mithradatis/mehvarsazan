@@ -10,22 +10,26 @@ const SocialIcons = () => {
         {
             title: "Facebook",
             icon: <RiFacebookFill />,
-            link: "#"
+            link: "#",
+            target: "_blank"
         },
         {
             title: "LinkedIn",
             icon: <FaLinkedinIn />,
-            link: "#"
+            link: "#",
+            target: "_blank"
         },
         {
             title: "Twitter",
             icon: <FaInstagram />,
-            link: "#"
+            link: "#",
+            target: "_blank"
         },
         {
             title: "Telegram",
             icon: <FaTelegram />,
-            link: "#"
+            link: "#",
+            target: "_blank"
         }
     ]
 
@@ -33,7 +37,11 @@ const SocialIcons = () => {
         <>
             {
                 socialIcons.map(item =>
-                    <Link href={item.link} key={item.title}>
+                    <Link 
+                        href={item.link} 
+                        target={item.target} 
+                        key={item.title}
+                    >
                         <div className="
                             text-2xl
                             text-cyan-600
@@ -49,7 +57,9 @@ const SocialIcons = () => {
                             hover:border
                             hover:border-slate-200
                         ">
-                            {item.icon}
+                            {
+                                item.icon
+                            }
                         </div>
                     </Link>
                 )

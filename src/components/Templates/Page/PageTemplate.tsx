@@ -56,6 +56,7 @@ export default async function PageTemplate({ node }: TemplateProps) {
       lg:py-16 
       md:py-8 
       sm:p-0
+      max-w-full
     ">
       <div className="flex flex-wrap">
         <div className="flex-auto w-full">

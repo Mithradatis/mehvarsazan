@@ -5,6 +5,7 @@ import gql from "graphql-tag";
 import Image from "next/image";
 import MenuLink from "@/components/Globals/Navigation/Menu";
 import Logo from "@/assets/logos/logo.png";
+import dynamic from "next/dynamic";
 
 type MenuItemWithChildren = MenuItem & {
   children?: MenuItemWithChildren[];
@@ -66,37 +67,16 @@ async function getMenu() {
   return hierarchicalMenu;
 }
 
+const ClientSideMenu = dynamic(() => import("./ClientSideMenu"), {});
+
 export default async function Navigation() {
   const menuItems = await getMenu();
 
   return (
     <>
-      <div className="
-        flex 
-        flex-wrap 
-        items-center 
-        lg:justify-between
-        justify-center 
-        w-full 
-        lg:w-3/4 
-        m-auto
-      ">
+      <div className="flex flex-wrap items-center lg:justify-between justify-center w-full xl:w-3/4 m-auto xl:px-0 px-4">
         <div className="relative inline-block drop-shadow-lg">
-          <div className="
-            hexagon 
-            relative
-            z-10
-            bg-gray-100 
-            w-[175px] 
-            h-[175px] 
-            mx-auto 
-            lg:mx-4 
-            mb-6 
-            lg:mb-0 
-            flex 
-            items-center 
-            justify-center
-          ">
+          <div className="hexagon relative z-10 bg-gray-100 w-[175px] h-[175px] mx-auto lg:mx-4 mb-6 lg:mb-0 flex items-center justify-center">
             <Image
               className="mt-2"
               src={Logo}
@@ -108,12 +88,11 @@ export default async function Navigation() {
         </div>
         <nav
           className="
-            relative
-            z-50
-            w-full
-            lg:flex-1
-            none 
-            lg:flex 
+            relative 
+            z-50 
+            w-full 
+            lg:flex-1 
+            none lg:flex 
             items-center 
             justify-between 
             bg-gradient-to-b 
@@ -121,9 +100,10 @@ export default async function Navigation() {
             to-gray-200
             rounded-xl 
             !py-0 
-            !px-8 
+            lg:!px-8
+            !px-4 
             mb-6 
-            lg:mb-0
+            lg:mb-0 
             shadow-[1px_1px_4px_rgba(0,0,0,.25)]
           "
           role="navigation"
@@ -133,6 +113,7 @@ export default async function Navigation() {
           {menuItems?.map((item: MenuItemWithChildren) => (
             <MenuLink key={item.id} item={item} />
           ))}
+          <ClientSideMenu menuItems={menuItems} />
         </nav>
       </div>
     </>

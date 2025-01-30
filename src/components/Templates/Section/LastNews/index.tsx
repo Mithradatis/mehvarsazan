@@ -73,15 +73,19 @@ const LastNews = async () => {
                     from-gray-100 
                     via-transparent 
                     to-transparent
+                    md:lg-0
+                    pb-12
                 "
             >
-        <div className="container mx-auto relative md:px-0 px-4">
-            <div className="flex flex-col items-center justify-center md:min-h-[200px] mx-auto">
-                <div className="dashed-line mx-auto has-arrow-before"></div>
+        <div className="2xl:container mx-auto relative px-4 pt-12 xl:pt-0">
+            <div className="flex flex-col items-center justify-center xl:min-h-[200px] mx-auto">
+                <div className="dashed-line mx-auto hidden xl:block"></div>
                 <h3 className="
-                    h-[5rem]
+                    xl:h-[5rem]
                     mt-2
-                    md:absolute
+                    mb-6
+                    xl:mb-0
+                    xl:absolute
                     relative 
                     inline-flex 
                     mx-auto 
@@ -89,20 +93,20 @@ const LastNews = async () => {
                     text-2xl 
                     bg-[#f6f7f8] 
                     py-4
-                    before:absolute
-                    before:left-[50%]
-                    before:translate-x-[-50%]
-                    before:top-0
-                    before:w-8
-                    before:h-1
-                    before:bg-[#7fc1e4]
-                     after:absolute
-                    after:left-[50%]
-                    after:translate-x-[-50%]
-                    after:bottom-0
-                    after:w-8
-                    after:h-1
-                    after:bg-[#7fc1e4]
+                    xl:before:absolute
+                    xl:before:left-[50%]
+                    xl:before:translate-x-[-50%]
+                    xl:before:top-0
+                    xl:before:w-8
+                    xl:before:h-1
+                    xl:before:bg-[#7fc1e4]
+                     xl:after:absolute
+                    xl:after:left-[50%]
+                    xl:after:translate-x-[-50%]
+                    xl:after:bottom-0
+                    xl:after:w-8
+                    xl:after:h-1
+                    xl:after:bg-[#7fc1e4]
                 ">
                     <BeveledLabel label={"آخرین اخبار"} />
                 </h3>
@@ -115,13 +119,12 @@ const LastNews = async () => {
                                 <div className={`
                                     relative 
                                     z-20
-                                    h-48 
+                                    min-h-48
+                                    xl:h-48
+                                    h-auto 
                                     overflow-hidden
                                     ${ index !== 0 ? index !== 2 ? 'md:rounded-2xl' : 'md:rounded-bl-2xl' : 'md:rounded-br-2xl' }`
                                 }>
-                                    <div className="
-                                        
-                                    "></div>
                                     <Image
                                         src={
                                             await getThumbnailUrl(

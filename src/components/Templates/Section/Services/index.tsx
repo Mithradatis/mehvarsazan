@@ -55,18 +55,18 @@ const Services = () => {
     ];
 
     return <section className="relative bg-gray-100">
-        <div className="container mx-auto relative px-4 md:px-0">
-            <div className="has-connection">
+        <div className="2xl:container mx-auto relative px-4">
+            <div className="has-connection flex justify-between">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 350 250"
-                    className="md:absolute relative left-0 w-1/2 hidden md:block"
+                    className="2xl:absolute relative left-0 w-1/2 hidden 2xl:block"
                 >
                     <defs>
                         <path id="path3" strokeWidth="2" strokeLinecap="round"
-                            d="M 80 0 
+                            d="M 85.5 0 
                                 V 47 
-                                Q 80 60 88 60 
+                                Q 85.5 62 95 62 
                                 H 350"
                         />
                         <mask id="mask3">
@@ -77,14 +77,18 @@ const Services = () => {
                 </svg>
                 <Image
                     className="
-                        md:absolute
-                        relative
+                        hidden
+                        lg:block
+                        absolute
                         mx-auto
-                        md:min-w-[350px]
-                        md:max-w-auto
+                        min-w-[100px]
+                        xl:min-w-[350px]
+                        xl:max-w-auto
                         max-w-[75%]
-                        md:left-[15%] 
-                        md:top-[-35px]
+                        xl:left-[15%]
+                        lg:left-[35px]
+                        2xl:top-[-35px]
+                        lg:top-[35px]
                         drop-shadow-[2px_4px_6px_rgba(34,34,34,.25)]
                     "
                     src={CarManufacturerImage}
@@ -98,25 +102,25 @@ const Services = () => {
                     relative
                     z-10 
                     mx-auto 
-                    md:left-[210px] 
+                    lg:left-[210px]
+                    left-0 
                     flex 
                     flex-col 
                     md:w-[36rem]
                     w-full
                 ">
-                    <div className="grid md:grid-cols-3 grid-cols-2 md:gap-10 gap-4 pt-2">
+                    <div className="grid md:grid-cols-3 grid-cols-2 md:gap-10 gap-6 pt-2">
                         {
-                            services.map(item => 
+                            services.map((item, index: number) => 
                             <Link 
                                 href={item.link} 
                                 target={item.target} 
                                 key={item.id}
+                                className={`${ index % 2 === 0 ? 'justify-self-end' : 'justify-self-start' }`}
                             >
                                 <div className="
-                                    sm:w-40 
-                                    sm:h-40 
-                                    w-30
-                                    h-30
+                                    w-40 
+                                    h-40 
                                     p-4 
                                     flex 
                                     flex-col 
@@ -149,7 +153,7 @@ const Services = () => {
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 350 250"
-                    className="absolute right-0 top-0 w-1/2 hidden md:block"
+                    className="absolute right-0 top-0 w-1/2 hidden 2xl:block"
                 >
                     <defs>
                         <path id="path4" strokeWidth="2" strokeLinecap="round"

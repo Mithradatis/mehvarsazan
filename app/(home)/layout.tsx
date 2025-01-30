@@ -29,7 +29,7 @@ export default async function RootLayout({
             {isEnabled && <PreviewNotice />}
             <Modal />
             <Header />
-            <main className="py-20">
+            <main className="pt-20">
               {children}
             </main>
             <Footer />

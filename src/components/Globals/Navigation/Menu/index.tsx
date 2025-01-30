@@ -10,7 +10,7 @@ const MenuLink = ({ item }: { item: MenuItemWithChildren }) => {
     const hasChildren = item.children && item.children.length > 0;
   
     return (
-      <div className="menu-item relative group">
+      <div className="menu-item relative group lg:flex space-x-8 hidden">
         <Link
           itemProp="url"
           href={item.uri || ''}
@@ -19,11 +19,10 @@ const MenuLink = ({ item }: { item: MenuItemWithChildren }) => {
         >
           <b 
             itemProp="name" 
-            className={`
+            className="
                 text-blue-900 
                 text-demi-bold 
-                drop-shadow-[1px_1px_0_rgba(255,255,255,1)]`
-            }
+                drop-shadow-[1px_1px_0_rgba(255,255,255,1)]"
           >
             {item.label}
           </b>

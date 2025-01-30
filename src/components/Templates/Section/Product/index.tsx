@@ -20,10 +20,10 @@ const Product = () => {
             to-gray-100
         "
     >
-        <div className="container mx-auto relative md:px-0 px-4">
-            <div className="relative block items-stretch justify-between has-connection">
-                <div className="relative top-0 right-0 md:float-start md:w-1/2 mx-auto">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 250" className="hidden md:block">
+        <div className="2xl:container mx-auto relative px-4">
+            <div className="relative block lg:items-stretch lg:justify-between justify-center has-connection">
+                <div className="relative top-0 right-0 2xl:float-start 2xl:w-1/2 mx-auto text-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 250" className="hidden 2xl:block">
                         <defs>
                             <motion.path
                                 id="path1"
@@ -64,26 +64,40 @@ const Product = () => {
                     <h3 className="
                         text-center
                         md:inline-flex
-                        md:absolute
-                        md:top-[122px]
-                        md:right-[172px]
-                        md:rotate-90
-                        bg-white
-                        md:py-0
+                        2xl:absolute
+                        2xl:top-[122px]
+                        2xl:right-[166.5px]
+                        2xl:rotate-90
+                        2xl:bg-white
+                        2xl:py-0
                         px-6
                         text-2xl
                         font-bold
-                        md:border-l-[3.5px] 
-                        md:border-r-[3.5px] 
-                        md:border-[#7fc1e4]
+                        2xl:border-l-[3.5px] 
+                        2xl:border-r-[3.5px] 
+                        2xl:border-[#7fc1e4]
                         mb-6
                     ">
                         <BeveledLabel label="محصولات" fontSize={2} />
                     </h3>
                 </div>
-                <div className="md:absolute relative flex-1 flex items-center justify-center z-10 md:py-24 pt-0 pb-12 mx-auto left-0 right-0">
+                <div className="
+                    2xl:absolute 
+                    relative 
+                    flex-1 
+                    flex 
+                    items-center 
+                    justify-center 
+                    z-10 
+                    2xl:py-24 
+                    pt-4
+                    pb-12
+                    mx-auto 
+                    left-0 
+                    right-0"
+                >
                     <Image
-                        className="min-w-3/4 md:min-w-[350px] mx-auto"
+                        className="min-w-3/4 md:min-w-[350px] xl:w-[350px] mx-auto"
                         src={ProductsVideoThumbnail}
                         alt={"Products"}
                     />
@@ -105,8 +119,8 @@ const Product = () => {
                         <span className="play-icon-1"></span>
                     </div>
                 </div>
-                <div className="relative bottom-0 left-0 md:float-end md:w-1/2">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 250" className="hidden md:block">
+                <div className="relative bottom-0 left-0 2xl:float-end 2xl:w-1/2 text-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 250" className="hidden 2xl:block">
                         <defs>
                             <path id="path2" strokeWidth="2" strokeLinecap="round"
                                 d="M 270 125 
@@ -123,20 +137,20 @@ const Product = () => {
                     <h3 className="
                         text-center
                         md:inline-flex
-                        md:absolute
-                        md:bottom-[60px]
-                        md:left-[102.5px]
-                        md:rotate-[-90deg]
-                        md:bg-gradient-to-r
-                        md:from-[#f3f4f6]
-                        md:to-[#f9f9fa]
-                        md:py-0
+                        2xl:absolute
+                        2xl:bottom-[58px]
+                        2xl:left-[98px]
+                        2xl:-rotate-90
+                        2xl:bg-gradient-to-r
+                        2xl:from-[#f3f4f6]
+                        2xl:to-[#f9f9fa]
+                        2xl:py-0
                         px-6
                         text-2xl
                         font-bold
-                        md:border-l-[3.5px] 
-                        md:border-r-[3.5px] 
-                        md:border-[#7fc1e4]
+                        2xl:border-l-[3.5px] 
+                        2xl:border-r-[3.5px] 
+                        2xl:border-[#7fc1e4]
                         pb-6
                     ">
                         <BeveledLabel label="خدمات" fontSize={2} />

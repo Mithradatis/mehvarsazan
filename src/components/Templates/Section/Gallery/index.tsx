@@ -67,10 +67,9 @@ const Gallery = async () => {
         className="relative"
     >
         <div className="
-            container 
+            2xl:container 
             mx-auto 
-            relative 
-            md:px-0 
+            relative
             px-4
             before:absolute
             before:z-1
@@ -87,7 +86,7 @@ const Gallery = async () => {
             before:-z-10"
         >
             <div className="hidden lg:block h-[200px] mb-4">
-                <div className="dashed-line mx-auto mt-[-3rem] has-arrow-after hidden md:block"></div>
+                <div className="dashed-line mx-auto mt-[-6rem] has-arrow-after hidden md:block"></div>
             </div>
             <BeveledLabel label={"گالری تصاویر"} />
             <div className="relative pt-12">

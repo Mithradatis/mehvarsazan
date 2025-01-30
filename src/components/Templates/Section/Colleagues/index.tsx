@@ -42,7 +42,7 @@ const Colleagues = () => {
         },
     ];
 
-    return <section className="container mx-auto relative py-12">
+    return <section className="2xl:container mx-auto relative py-12 px-4">
         <div className="min-h-[200px] mb-6">
             <div
                 className="
@@ -66,7 +66,7 @@ const Colleagues = () => {
             label={"همکاران ما"}
             fontSize={3}
         />
-        <div className="flex flex-wrap items-center justify-between w-full lg:w-3/4 mx-auto pt-12">
+        <div className="flex flex-col md:flex-row flex-wrap items-center justify-between w-full lg:w-3/4 mx-auto pt-12">
             {
                 colleagues.map((colleague, index) =>
                     <MotionWrapper
