@@ -7,6 +7,7 @@ import "animate.css";
 
 import { fetchGraphQL } from "@/utils/fetchGraphQL";
 import { print } from "graphql/language/printer";
+import MainSlider from "@/components/Templates/Section/LightBox/main-slider";
 
 async function getWidget() {
     const widgetQuery = gql`
@@ -35,9 +36,20 @@ const LightBox = async () => {
     const content = await getWidget();
 
     return (
-        <section className="flex xl:flex-row lg:flex-row md:flex-col flex-col items-center justify-center md:px-0 px-4">
-            <div className="xl:mr-[15%] lg:text-right text-center mx-auto flex-1 min-w-1/2 px-0 md:px-4">
-                <h1 className="xl:text-7xl lg:text-7xl md:text-5xl text-6xl text-white font-bold animate__animated animate__bounceInRight beveled-title">
+        <section className="flex xl:flex-row lg:flex-row md:flex-col flex-col items-center justify-between md:px-0 px-4 relative z-20">
+            <div className="xl:mr-[12.5%] lg:text-right text-center mx-auto flex-1 min-w-1/2 px-0 pb-12 md:px-4">
+                <h1 className="
+                    xl:text-7xl 
+                    lg:text-7xl 
+                    md:text-5xl 
+                    text-6xl 
+                    text-white 
+                    font-bold 
+                    animate__animated 
+                    animate__bounceInRight 
+                    beveled-title
+                    !leading-snug"
+                >
                     محورسازان<br />
                     ایران خودرو
                 </h1>
@@ -45,7 +57,7 @@ const LightBox = async () => {
                     ساخت محور خودرو
                 </h2>
             </div>
-            <div className="lg:w-auto flex flex-col items-end">
+            {/* <div className="lg:w-auto flex flex-col items-end">
                 <div className="relative z-40">
                     <MotionWrapper
                         type="div"
@@ -152,6 +164,50 @@ const LightBox = async () => {
                         </div>
                     </div>
                 </div>
+            </div> */}
+            <div className="
+                main-slider 
+                w-full 
+                lg:w-1/2
+                mt-0 
+                lg:mt-[50px]
+                h-auto
+                lg:bg-white
+                shadow-[-10px_4px_35px_rgba(0,0,0,.5)]
+                transition-[.5s]
+                rounded-r-[10px]
+                relative
+                z-20
+                lg:before:block
+                before:hidden
+                before:absolute 
+                before:z-10 
+                before:top-[0.5px] 
+                before:left-[-15px] 
+                before:w-[15px] 
+                before:h-[calc(100%-1px)] 
+                before:bg-gradient-to-b 
+                before:from-gray-300 
+                before:to-white 
+                before:origin-bottom-right
+                before:skew-y-[45deg]
+                before:rounded-none
+                lg:after:block
+                after:hidden
+                after:absolute 
+                after:top-[-14px] 
+                after:left-[1px] 
+                after:w-[calc(100%-4px)] 
+                after:h-[15.7px] 
+                after:bg-[#efefef] 
+                after:origin-bottom-left 
+                after:skew-x-[45deg] 
+                after:rounded-tl-none 
+                after:rounded-tr-[6px] 
+                after:rounded-bl-none 
+                after:rounded-br-none"   
+            >
+                <MainSlider />
             </div>
         </section>
     );

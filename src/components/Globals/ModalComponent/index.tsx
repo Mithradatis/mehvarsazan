@@ -78,7 +78,7 @@ const ModalComponent = ({children}: {children: any}) => {
             <CiCircleRemove fontSize={36} />
           </button>
         </div>
-        <div className="p-4">
+        <div>
           {children}
         </div>
       </div>

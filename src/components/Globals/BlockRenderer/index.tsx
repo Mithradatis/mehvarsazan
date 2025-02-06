@@ -1,6 +1,5 @@
 import { ReactNode } from 'react';
-
-import Gallery from '@/components/Globals/SwiperSlider';
+import SwiperSlider from '@/components/Globals/SwiperSlider';
 
 interface HeadingProps {
   level: string;
@@ -55,7 +54,7 @@ const BlockRenderer = ({ blocks }: { blocks: any }) => {
     switch (block.type) {
       case 'figure':
         if (block.props.className?.includes('wp-block-gallery')) {
-          return <Gallery key={block.key} images={block.props.children} />;
+          return <SwiperSlider key={block.key} images={block.props.children} />;
         }
 
         return (

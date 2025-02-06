@@ -29,7 +29,7 @@ export default async function RootLayout({
             {isEnabled && <PreviewNotice />}
             <Modal />
             <Header />
-            <main className="pt-20">
+            <main className="pt-0 lg:pt-20">
               {children}
             </main>
             <Footer />
