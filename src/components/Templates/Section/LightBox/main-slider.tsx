@@ -1,7 +1,6 @@
 import { fetchGraphQL } from "@/utils/fetchGraphQL";
 import gql from "graphql-tag";
 import { print } from "graphql/language/printer";
-import { getThumbnailUrl } from "@/utils/imageHandler";
 import { extractBlockFromBlocks } from "@/utils/blocksHandler";
 import SwiperSlider from "@/components/Globals/SwiperSlider";
 
@@ -35,34 +34,24 @@ async function getGalleryImages() {
     return widget;
 }
 
-const fetchThumbnails = async (images: any) => {
-    if (!Array.isArray(images.innerBlocks)) {
-        return [];
-    }
-    return await Promise.all(
-        images.innerBlocks.map(async (image: any) => ({
-            url: await getThumbnailUrl(
-                image.attributes.url,
-                640,
-                image.attributes.width,
-                image.attributes.height
-            ),
-            width: image.attributes.width,
-            height: image.attributes.height,
-            alt: image.attributes.alt || image.attributes.title,
-        }))
-    );
-};
-
 const MainSlider = async () => {
     const gallery = await getGalleryImages();
     const images = extractBlockFromBlocks(gallery.blocks, 'gallery');
-    const thumbnails = await fetchThumbnails(images);
 
     return (
-        <div className="overflow-hidden rounded-[10px] lg:rounded-[0_10px_10px_0]">
+        <div className="overflow-hidden rounded-xl flex">
             <SwiperSlider
                 images={images.innerBlocks}
+                options={
+                    {
+                        modules: {
+                            hasPagination: true
+                        },
+                        autoplay: {
+                            delay: 6000
+                        }
+                    }
+                }
             />
         </div>
     )

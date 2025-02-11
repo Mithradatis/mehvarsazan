@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import SwiperSlider from '@/components/Globals/SwiperSlider';
+import { Autoplay } from 'swiper/modules';
 
 interface HeadingProps {
   level: string;
@@ -54,7 +55,21 @@ const BlockRenderer = ({ blocks }: { blocks: any }) => {
     switch (block.type) {
       case 'figure':
         if (block.props.className?.includes('wp-block-gallery')) {
-          return <SwiperSlider key={block.key} images={block.props.children} />;
+          return (
+            <SwiperSlider
+              key={block.key} 
+              images={block.props.children}
+              options={
+                { 
+                  modules: { 
+                    hasNavigation: true, 
+                    hasPagination: true, 
+                    hasAutoplay: true 
+                  } 
+                }
+              } 
+            />
+          );
         }
 
         return (

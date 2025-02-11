@@ -1,43 +1,10 @@
-import Image from "next/image";
-import CarImage from "@/assets/images/car.png";
-import parseHTML from "@/utils/htmlParser";
-import gql from "graphql-tag";
-import MotionWrapper from "@/components/Globals/MotionWrapper";
 import "animate.css";
-
-import { fetchGraphQL } from "@/utils/fetchGraphQL";
-import { print } from "graphql/language/printer";
 import MainSlider from "@/components/Templates/Section/LightBox/main-slider";
 
-async function getWidget() {
-    const widgetQuery = gql`
-   query SinglePost {
-      widget(id: "16", idType: DATABASE_ID) {
-        title
-        content
-      }
-    }
-  `;
-
-    const response = await fetchGraphQL<{
-        widget: any;
-    }>(print(widgetQuery));
-
-    if (!response || !response.widget) {
-        return null;
-    }
-
-    const { widget } = response;
-
-    return widget;
-}
-
 const LightBox = async () => {
-    const content = await getWidget();
-
     return (
-        <section className="flex xl:flex-row lg:flex-row md:flex-col flex-col items-center justify-between md:px-0 px-4 relative z-20">
-            <div className="xl:mr-[12.5%] lg:text-right text-center mx-auto flex-1 min-w-1/2 px-0 pb-12 md:px-4">
+        <section className="flex xl:flex-row lg:flex-row md:flex-col flex-col items-center justify-between md:px-0 relative z-20">
+            <div className="xl:mr-[12.5%] lg:text-right text-center mx-auto flex-1 min-w-1/2 px-0 pb-12 md:px-4 hidden">
                 <h1 className="
                     xl:text-7xl 
                     lg:text-7xl 
@@ -167,45 +134,14 @@ const LightBox = async () => {
             </div> */}
             <div className="
                 main-slider 
-                w-full 
-                lg:w-1/2
-                mt-0 
-                lg:mt-[50px]
+                w-full
+                lg:w-4/5
+                mx-auto
                 h-auto
-                lg:bg-white
-                shadow-[-10px_4px_35px_rgba(0,0,0,.5)]
+                shadow-[0_4px_8px_rgba(0,0,0,.25)]
                 transition-[.5s]
-                rounded-r-[10px]
-                relative
-                z-20
-                lg:before:block
-                before:hidden
-                before:absolute 
-                before:z-10 
-                before:top-[0.5px] 
-                before:left-[-15px] 
-                before:w-[15px] 
-                before:h-[calc(100%-1px)] 
-                before:bg-gradient-to-b 
-                before:from-gray-300 
-                before:to-white 
-                before:origin-bottom-right
-                before:skew-y-[45deg]
-                before:rounded-none
-                lg:after:block
-                after:hidden
-                after:absolute 
-                after:top-[-14px] 
-                after:left-[1px] 
-                after:w-[calc(100%-4px)] 
-                after:h-[15.7px] 
-                after:bg-[#efefef] 
-                after:origin-bottom-left 
-                after:skew-x-[45deg] 
-                after:rounded-tl-none 
-                after:rounded-tr-[6px] 
-                after:rounded-bl-none 
-                after:rounded-br-none"   
+                rounded-[16px]
+                relative"
             >
                 <MainSlider />
             </div>

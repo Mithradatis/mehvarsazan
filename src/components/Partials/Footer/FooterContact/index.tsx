@@ -5,8 +5,8 @@ import { print } from "graphql/language/printer";
 
 async function getWidget() {
     const widgetQuery = gql`
-     query SinglePost {
-        widget(id: "330", idType: DATABASE_ID) {
+     query SinglePost($slug: ID!, $idType: WidgetIdType!) {
+        widget(id: $slug, idType: $idType) {
           title
           content
         }
@@ -15,7 +15,12 @@ async function getWidget() {
 
     const response = await fetchGraphQL<{
         widget: any;
-    }>(print(widgetQuery));
+    }>(
+        print(widgetQuery), {
+            slug: 'footer-contact',
+            idType: 'URI'
+        }
+    );
 
     if (!response || !response.widget) {
         return null;

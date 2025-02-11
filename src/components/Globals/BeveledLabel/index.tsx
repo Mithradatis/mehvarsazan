@@ -1,6 +1,6 @@
 const BeveledLabel = ({label, fontSize = 3}: {label: string, fontSize?: number}) => {
     return (
-        <span 
+        <div 
             className="
                 mx-auto 
                 cursor-default 
@@ -50,7 +50,7 @@ const BeveledLabel = ({label, fontSize = 3}: {label: string, fontSize?: number})
             <div className="dont-mind-me opacity-0">
                 { label }
             </div>
-        </span>
+        </div>
     )
 }
 
