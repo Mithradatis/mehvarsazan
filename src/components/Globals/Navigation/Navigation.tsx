@@ -79,16 +79,10 @@ export default async function Navigation() {
         none lg:flex 
         items-center 
         justify-around
-        bg-gradient-to-b 
-        from-gray-50 
-        to-gray-200
         rounded-xl 
         !py-0 
         lg:!px-8
-        !px-4 
-        mb-6 
-        lg:mb-0 
-        shadow-[1px_1px_4px_rgba(0,0,0,.25)]
+        !px-4
       "
       role="navigation"
       itemScope

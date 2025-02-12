@@ -65,20 +65,19 @@ const ClientSideMenu = ({ menuItems }: { menuItems: any }) => {
         <div className="lg:hidden flex items-center py-4 min-h-[56px]">
             <button
                 id="hamburger"
-                className="text-blue-900"
+                className="text-white"
                 onClick={toggleMenu}
             >
-                <span className={`block h-1 bg-blue-900 mb-1 ${isMenuOpen ? "rotate-45 w-4" : "w-6"}`}></span>
-                <span className={`block h-1 bg-blue-900 mb-1 ${isMenuOpen ? "hidden" : "w-6"}`}></span>
-                <span className={`block h-1 bg-blue-900 mb-1 ${isMenuOpen ? "-rotate-45 w-4" : "w-6"}`}></span>
+                <span className={`block h-1 bg-white mb-1 ${isMenuOpen ? "rotate-45 w-4" : "w-6"}`}></span>
+                <span className={`block h-1 bg-white mb-1 ${isMenuOpen ? "hidden" : "w-6"}`}></span>
+                <span className={`block h-1 bg-white mb-1 ${isMenuOpen ? "-rotate-45 w-4" : "w-6"}`}></span>
             </button>
             <span 
                 className="
                 mr-3 
-                text-blue-900 
+                text-white
                 text-demi-bold 
-                text-xl
-                drop-shadow-[1px_1px_0_rgba(255,255,255,1)]"
+                text-xl"
             >
                 {
                     activeMenuItem.label

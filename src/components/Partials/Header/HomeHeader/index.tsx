@@ -65,14 +65,9 @@ const HomeHeader = async () => {
                     </div>
                 </div>
             </div>
-            <div className="
-                header-gradient 
-                max-h-auto 
-                lg:max-h-[650px]
-                2xl:min-h-[650px]"
-            >
-                <div className="2xl:container mx-auto py-6 px-4">
-                    <div className="lg:w-4/5 w-full mx-auto mb-6">
+            <div className="header-gradient">
+                <div className="mx-auto">
+                    <div className="lg:w-3/4 w-full mx-auto">
                         <Navigation />
                     </div>
                     <header>

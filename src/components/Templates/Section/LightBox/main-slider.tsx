@@ -39,7 +39,7 @@ const MainSlider = async () => {
     const images = extractBlockFromBlocks(gallery.blocks, 'gallery');
 
     return (
-        <div className="overflow-hidden rounded-xl flex">
+        <div className="overflow-hidden flex">
             <SwiperSlider
                 images={images.innerBlocks}
                 options={

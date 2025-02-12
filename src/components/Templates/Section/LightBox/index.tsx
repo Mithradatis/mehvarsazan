@@ -135,12 +135,8 @@ const LightBox = async () => {
             <div className="
                 main-slider 
                 w-full
-                lg:w-4/5
-                mx-auto
                 h-auto
-                shadow-[0_4px_8px_rgba(0,0,0,.25)]
                 transition-[.5s]
-                rounded-[16px]
                 relative"
             >
                 <MainSlider />

@@ -75,24 +75,16 @@ const Introduction = async () => {
         relative 
         z-10 
         pt-4
-        px-4
-        lg:pt-0
-        xl:pt-4 
-        2xl:pt-32"
+        px-4"
     >
         <div className="
             flex 
             flex-wrap 
             items-start 
             justify-between 
-            md:px-0 
-            px-4 
-            pt-0 
-            lg:pt-12 
-            pb-12 
-            xl:py-12
-            2xl:pb-0 
-            2xl:pt-16"
+            md:px-0
+            pb-12
+            2xl:pb-0"
         >
             <div className="w-full lg:flex-1 2xl:mt-36 pt-6">
                 <div className={`

@@ -38,15 +38,15 @@ const SwiperSlider = (
       }}
       navigation={options?.hasNavigation || false}
       pagination={{ clickable: true }}
-      className="h-auto flex"
+      className="h-auto flex max-h-[85vh]"
     > {
         images.map((image: any, index: number) => (
-          <SwiperSlide key={index} className="w-auto h-full object-cover mx-0">
-            <figure className="h-full flex">
+          <SwiperSlide key={index} className="w-full h-auto object-cover mx-0">
+            <figure className="h-full lg:h-auto flex">
               <img
                 src={image?.props?.children[0].props.src || image?.attributes?.url}
                 alt={image?.props?.children[0].props.alt || image?.attributes?.alt || image?.attributes?.title}
-                className="w-auto min-w-full h-full"
+                className="w-full h-auto"
                 width={
                   image?.props?.children[0].props.width || '100%'
                 }

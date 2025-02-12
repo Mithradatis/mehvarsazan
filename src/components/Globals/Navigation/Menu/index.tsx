@@ -17,15 +17,12 @@ const MenuLink = ({ item }: { item: MenuItemWithChildren }) => {
           target={item.target || "_self"}
           className="block py-4"
         >
-          <b 
+          <span 
             itemProp="name" 
-            className="
-                text-blue-900 
-                text-demi-bold 
-                drop-shadow-[1px_1px_0_rgba(255,255,255,1)]"
+            className="text-white"
           >
             {item.label}
-          </b>
+          </span>
         </Link>
   
         {hasChildren && (
