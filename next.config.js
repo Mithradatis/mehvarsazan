@@ -16,10 +16,9 @@ const nextConfig = {
     WP_APP_PASS: process.env.NEXT_PUBLIC_WP_APP_PASS,
   },
   images: {
-    domains: ['api.ikamco.ir'],
     remotePatterns: [
       {
-        protocol: "http",
+        protocol: "https",
         hostname: process.env.NEXT_PUBLIC_WORDPRESS_API_HOSTNAME,
         port: "",
       },
