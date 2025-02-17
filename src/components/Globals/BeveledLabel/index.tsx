@@ -1,7 +1,19 @@
-const BeveledLabel = ({label, fontSize = 3}: {label: string, fontSize?: number}) => {
+import { capitalize } from "@/utils/textTransformer"
+
+const BeveledLabel = (
+    {
+        label, 
+        fontSize = 3,
+        extraClasses
+    }: {
+        label: string; 
+        fontSize?: number;
+        extraClasses?: any;
+    }
+) => {
     return (
         <div 
-            className="
+            className={`
                 mx-auto 
                 cursor-default 
                 select-none 
@@ -13,7 +25,8 @@ const BeveledLabel = ({label, fontSize = 3}: {label: string, fontSize?: number})
                 text-center 
                 flex 
                 justify-center
-            "
+                ${extraClasses}
+            `}
             style={{ 
                 fontSize: `${fontSize}rem` 
             }}
@@ -28,14 +41,14 @@ const BeveledLabel = ({label, fontSize = 3}: {label: string, fontSize?: number})
                 group-hover:drop-shadow-md 
                 group-active:drop-shadow-none
             ">
-                { label }
+                { capitalize(label) }
             </div>
             <div className="
                 absolute 
                 top-[4px] 
                 text-neutral-300
             ">
-                { label }
+                { capitalize(label) }
             </div>
             <div className="
                 absolute 
@@ -45,10 +58,10 @@ const BeveledLabel = ({label, fontSize = 3}: {label: string, fontSize?: number})
                 group-hover:translate-y-1 
                 group-active:translate-y-1.5
             ">
-                { label }
+                { capitalize(label) }
             </div>
             <div className="dont-mind-me opacity-0">
-                { label }
+                { capitalize(label) }
             </div>
         </div>
     )

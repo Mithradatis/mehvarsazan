@@ -2,13 +2,16 @@ import parseHTML from "@/utils/htmlParser";
 import { fetchGraphQL } from "@/utils/fetchGraphQL";
 import gql from "graphql-tag";
 import { print } from "graphql/language/printer";
+import Translation from "@/types/translation";
+import { fetchTranslations } from "@/app/api/translation/translationsFetcher";
+import { LanguageType } from "@/types/language";
 
-async function getWidget() {
+async function getWidget(language: string) {
     const widgetQuery = gql`
-     query SinglePost($slug: ID!, $idType: WidgetIdType!) {
+     query getWidget($slug: ID!, $idType: WidgetIdType!) {
         widget(id: $slug, idType: $idType) {
-          title
-          content
+            title
+            content
         }
       }
     `;
@@ -17,7 +20,7 @@ async function getWidget() {
         widget: any;
     }>(
         print(widgetQuery), {
-            slug: 'footer-contact',
+            slug: `footer-contact-${language}`,
             idType: 'URI'
         }
     );
@@ -31,12 +34,17 @@ async function getWidget() {
     return widget;
 }
 
-const FooterContact = async () => {
-    const content = await getWidget();
+const FooterContact = async ({language}: {language: LanguageType}) => {
+    const content = await getWidget(language);
+    const translation: Translation = await fetchTranslations(language);
 
     return (
         <div>
-            <h4 className={"text-bold text-white text-3xl mb-4"}>تماس با ما</h4>
+            <h4 className={"text-bold text-white text-3xl mb-4"}>
+                {
+                    translation.contact
+                }
+            </h4>
             <p className="text-white text-sm leading-8">
                 {
                     parseHTML(content.content)

@@ -7,49 +7,87 @@ import BidsIcon from "@/assets/icons/bids-icon.png";
 import OnlineShopIcon from "@/assets/icons/online-shop-icon.png";
 import MarketingIcon from "@/assets/icons/marketing-icon.png";
 import LabIcon from "@/assets/icons/lab-icon.png";
+import { LanguageType } from "@/types/language";
+import { capitalize } from "@/utils/textTransformer";
 
-const Services = () => {
+const Services = ({language}: {language: LanguageType}) => {
     const services = [
         {
             id: 'service-1',
             icon: ConferenceIcon,
-            title: 'سالن همایش',
-            link: 'سالن-همایش',
+            title: {
+                en: 'conference hall',
+                fa: 'سالن همایش'
+            },
+            link: {
+                en:'conference-hall',
+                fa:'سالن-همایش'
+            },
             target: '_self'
         },
         {
             id: 'service-2',
             icon: AnnouncementsIcon,
-            title: 'اطلاعیه‌ها',
-            link: 'اطلاعیه‌ها',
+            title: {
+                en: 'announcements',
+                fa: 'اطلاعیه‌ها'
+            },
+            link: {
+                en:'announcements',
+                fa:'اطلاعیه‌ها'
+            },
             target: '_self'
         },
         {
             id: 'service-3',
             icon: BidsIcon,
-            title: 'مزایدات و مناقصات',
-            link: 'مزایدات-و-مناقصات',
+            title: {
+                en: 'tenders',
+                fa: 'مزایدات و مناقصات'
+            },
+            link: {
+                en:'tenders',
+                fa:'مزایدات-و-مناقصات'
+            },
             target: '_self'
         },
         {
             id: 'service-4',
             icon: OnlineShopIcon,
-            title: 'فروشگاه اینترنتی',
-            link: 'https://eikamco.ir/',
+            title: {
+                en: 'online shop',
+                fa: 'فروشگاه اینترنتی'
+            },
+            link: {
+                en:'online-shop',
+                fa:'فروشگاه-اینترنتی'
+            },
             target: '_blank'
         },
         {
             id: 'service-5',
             icon: MarketingIcon,
-            title: 'بازاریابی و فروش',
-            link: 'بازاریابی-و-فروش',
+            title: {
+                en: 'marketing',
+                fa: 'بازاریابی و فروش'
+            },
+            link: {
+                en:'marketing',
+                fa:'بازاریابی-و-فروش'
+            },
             target: '_self'
         },
         {
             id: 'service-6',
             icon: LabIcon,
-            title: 'آزمایشگاه',
-            link: 'آزمایشگاه',
+            title: {
+                en: 'lab',
+                fa: 'آزمایشگاه'
+            },
+            link: {
+                en:'lab',
+                fa:'آزمایشگاه'
+            },
             target: '_self'
         },
     ];
@@ -113,7 +151,7 @@ const Services = () => {
                         {
                             services.map((item, index: number) => 
                             <Link 
-                                href={item.link} 
+                                href={item.link[language]} 
                                 target={item.target} 
                                 key={item.id}
                                 className={`${ index % 2 === 0 ? 'justify-self-end' : 'justify-self-start' }`}
@@ -136,12 +174,12 @@ const Services = () => {
                                     <Image
                                         className="min-w-[75px]"
                                         src={item.icon}
-                                        alt={item.title}
+                                        alt={item.title[language]}
                                         quality={100}
                                     />
                                     <h4 className="mt-2 text-slate-700">
                                         {
-                                            item.title
+                                            capitalize(item.title[language])
                                         }
                                     </h4>
                                 </div>

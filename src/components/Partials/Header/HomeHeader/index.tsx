@@ -1,10 +1,21 @@
 import Navigation from "@/components/Globals/Navigation/Navigation";
 import LightBox from "@/components/Templates/Section/LightBox";
 import Image from "next/image";
-import Link from "next/link";
 import Logo from "@/assets/logos/logo.png";
+import LanguageSwitcher from "@/components/Widgets/languageSwitcher";
+import Translation from "@/types/translation";
+import { fetchTranslations } from "@/app/api/translation/translationsFetcher";
+import { LanguageType } from "@/types/language";
 
-const HomeHeader = async () => {
+const HomeHeader = async (
+    {
+        currentLanguage
+    }: {
+        currentLanguage: LanguageType
+    }
+) => {
+    const translation: Translation = await fetchTranslations(currentLanguage);
+
     return (
         <>
             <div className="
@@ -46,29 +57,25 @@ const HomeHeader = async () => {
                     </div>
                 </div>
                 <div className="flex items-center">
-                    <div className="ml-4">
+                    <div className="me-4">
                         <input 
                             className="rounded-lg border border-1 border-slate-300 py-2 px-4"
                             type="text" 
                             name="search"
-                            placeholder="جست‌وجو"
+                            placeholder={translation.search}
                         />
                     </div>
-                    <div>
-                        <Link href={'#'}>
-                            فا
-                        </Link>
-                        <span className="mx-2">|</span>
-                        <Link href={'#'}>
-                            EN
-                        </Link>
-                    </div>
+                    <LanguageSwitcher 
+                        currentLang={currentLanguage} 
+                    />
                 </div>
             </div>
             <div className="header-gradient">
                 <div className="mx-auto">
                     <div className="lg:w-3/4 w-full mx-auto">
-                        <Navigation />
+                        <Navigation 
+                            language={currentLanguage} 
+                        />
                     </div>
                     <header>
                         <LightBox />

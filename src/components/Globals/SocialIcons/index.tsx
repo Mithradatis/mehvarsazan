@@ -1,35 +1,34 @@
-import { RiFacebookFill } from "react-icons/ri";
-import { FaLinkedinIn } from "react-icons/fa";
-import { FaInstagram } from "react-icons/fa";
-import { FaTelegram } from "react-icons/fa";
+import { FaHome } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
 
 import Link from "next/link";
+import { LanguageType } from "@/types/language";
 
-const SocialIcons = () => {
+const SocialIcons = (
+    {
+        language
+    }: {
+        language: LanguageType
+    }
+) => {
     const socialIcons = [
         {
-            title: "Facebook",
-            icon: <RiFacebookFill />,
-            link: "#",
-            target: "_blank"
+            title: "Home",
+            icon: <FaHome />,
+            link: `${process.env.NEXT_PUBLIC_BASE_URL}/${language}`,
+            target: "_self"
         },
         {
-            title: "LinkedIn",
-            icon: <FaLinkedinIn />,
-            link: "#",
-            target: "_blank"
+            title: "Email",
+            icon: <MdEmail />,
+            link: "mailto:mehvarsazan@ikamco.com",
+            target: "_self"
         },
         {
-            title: "Twitter",
-            icon: <FaInstagram />,
-            link: "#",
-            target: "_blank"
-        },
-        {
-            title: "Telegram",
-            icon: <FaTelegram />,
-            link: "#",
-            target: "_blank"
+            title: "Language",
+            icon: <span className="text-base font-bold">{ language === 'fa' ? 'EN' : 'FA' }</span>,
+            link: `${process.env.NEXT_PUBLIC_BASE_URL}/${language === 'fa' ? 'en' : 'fa'}`,
+            target: "_self"
         }
     ]
 

@@ -6,13 +6,14 @@ import ReactHtmlParser from "react-html-parser";
 import BlockRenderer from "@/components/Globals/BlockRenderer";
 
 import SocialIcons from "@/components/Globals/SocialIcons";
-import ContactWidget from "@/components/Widgets/ContactWidget";
+import { LanguageType } from "@/types/language";
 
 interface TemplateProps {
   node: ContentNode;
+  language: LanguageType;
 }
 
-export default async function PageTemplate({ node }: TemplateProps) {
+export default async function PageTemplate({ node, language }: TemplateProps) {
   const { page }: any = await fetchGraphQL<{ page: Page }>(
     print(PageQuery), 
     {
@@ -46,7 +47,9 @@ export default async function PageTemplate({ node }: TemplateProps) {
           py-8
           gap-6
         ">
-        <SocialIcons />
+        <SocialIcons 
+          language={language}
+        />
       </div>
     </div>
     <div className="
@@ -97,7 +100,7 @@ export default async function PageTemplate({ node }: TemplateProps) {
       lg:block
     ">
       <div className="sticky top-[30px]">
-        <ContactWidget />
+        
       </div>
     </div>
   </div>;

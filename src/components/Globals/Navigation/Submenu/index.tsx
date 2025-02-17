@@ -82,9 +82,9 @@ const SubMenuItem = ({
             <div className="
               hidden 
               peer-checked:block 
-              pr-2 border-r 
+              ps-2 border-r 
               border-slate-600 
-              mr-2 
+              ms-2 
               mt-1
             ">
               {item.children?.map((child) => (

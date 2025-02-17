@@ -7,13 +7,14 @@ import BlockRenderer from "@/components/Globals/BlockRenderer";
 
 import SocialIcons from "@/components/Globals/SocialIcons";
 import Image from "next/image";
-import ContactWidget from "@/components/Widgets/ContactWidget";
+import { LanguageType } from "@/types/language";
 
 interface TemplateProps {
   node: ContentNode;
+  language: LanguageType
 }
 
-export default async function PostTemplate({ node }: TemplateProps) {
+export default async function PostTemplate({ node, language }: TemplateProps) {
   const { post }: any = await fetchGraphQL<{ post: Post }>(
     print(PostQuery), 
     {
@@ -47,7 +48,9 @@ export default async function PostTemplate({ node }: TemplateProps) {
           py-8
           gap-6
         ">
-        <SocialIcons />
+        <SocialIcons
+          language={language}
+        />
       </div>
     </div>
     <div className="
@@ -107,7 +110,7 @@ export default async function PostTemplate({ node }: TemplateProps) {
       lg:block
     ">
       <div className="sticky top-[30px]">
-        <ContactWidget />
+        
       </div>
     </div>
   </div>;

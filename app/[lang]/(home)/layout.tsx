@@ -1,6 +1,7 @@
 
 import { draftMode } from "next/headers";
 import { Suspense } from "react";
+import languages from "@/lib/language";
 import "animate.css";
 
 import "@/app/globals.css";
@@ -13,26 +14,37 @@ import Modal from "@/components/Partials/Modal";
 
 import { ModalProvider } from "@/hooks/useModal";
 import Loading from "@/components/Globals/Loading";
+import { LayoutParams } from "@/types/page-params";
+
+type Props = {
+  children: React.ReactNode;
+  params: Promise<LayoutParams>;
+}
 
 export default async function RootLayout({
-  children
-}: {
-  children: React.ReactNode;
-}) {
+  children,
+  params
+}: Props) {
+  const { lang } = await params;
+  const dir = languages[lang]?.dir || 'ltr';
   const { isEnabled } = await draftMode();
 
   return (
-    <html lang="fa" dir="rtl">
-      <body>
+    <html lang={lang}>
+      <body dir={dir}>
         <Suspense fallback={<Loading />}>
           <ModalProvider>
             {isEnabled && <PreviewNotice />}
             <Modal />
-            <Header />
+            <Header 
+              currentLanguage={lang}
+            />
             <main className="pt-0 lg:pt-20">
               {children}
             </main>
-            <Footer />
+            <Footer 
+              currentLanguage={lang} 
+            />
           </ModalProvider>
         </Suspense>
       </body>

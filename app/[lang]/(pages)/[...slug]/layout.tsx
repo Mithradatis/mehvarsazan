@@ -8,21 +8,33 @@ import { PreviewNotice } from "@/components/Globals/PreviewNotice/PreviewNotice"
 import Header from "@/components/Partials/Header/PageHeader";
 import Footer from "@/components/Partials/Footer";
 
-export default async function RootLayout({
-  children
-}: {
+import languages from "@/lib/language";
+import { LayoutParams } from "@/types/page-params";
+
+type Props = {
   children: React.ReactNode;
-}) {
+  params: Promise<LayoutParams>;
+}
+export default async function RootLayout({
+  children,
+  params
+}: Props) {
+  const resolvedParams = await params;
+  const lang = resolvedParams.lang;
+  const dir = languages[lang]?.dir || 'ltr';
   const { isEnabled } = await draftMode();
 
   return (
-    <html lang="fa" dir="rtl">
+    <html lang={lang}>
       <body 
+        dir={dir}
         className="flex flex-col" 
         style={{ minHeight: '100vh' }}
       >
         {isEnabled && <PreviewNotice />}
-        <Header />
+        <Header 
+          currentLanguage={lang} 
+        />
         <main className="
           flex-1 
           flex 
@@ -32,7 +44,9 @@ export default async function RootLayout({
           to-white">
           {children}
         </main>
-        <Footer />
+        <Footer 
+          currentLanguage={lang} 
+        />
       </body>
     </html>
   );

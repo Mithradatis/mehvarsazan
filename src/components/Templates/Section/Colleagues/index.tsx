@@ -7,36 +7,61 @@ import ExchangeOrganizationLogo from "@/assets/logos/exchange-organizaition.png"
 import TavanirLogo from "@/assets/logos/tavaniran.png";
 import BeveledLabel from "@/components/Globals/BeveledLabel";
 import MotionWrapper from "@/components/Globals/MotionWrapper";
+import { LanguageType } from "@/types/language";
+import Translation from "@/types/translation";
+import { fetchTranslations } from "@/app/api/translation/translationsFetcher";
 
-const Colleagues = () => {
+const Colleagues = async (
+    {
+        language
+    }: {
+        language: LanguageType
+    }
+) => {
+    const translation: Translation = await fetchTranslations(language);
     const colleagues = [
         {
             id: 'colleague-1',
-            title: 'ایران خودرو',
+            title: {
+                en: 'Iran Khodro',
+                fa: 'ایران خودرو'
+            },
             logo: IranKhodroLogo,
             link: 'https://ikco.ir'
         },
         {
             id: 'colleague-2',
-            title: 'ساپکو',
+            title: {
+                en: 'Sapco',
+                fa: 'ساپکو'
+            },
             logo: SapcoLogo,
             link: 'https://sapco.com'
         },
         {
             id: 'colleague-3',
-            title: 'ایساکو',
+            title: {
+                en: 'Isaco',
+                fa: 'ایساکو'
+            },
             logo: IsacoLogo,
             link: 'https://isaco.ir'
         },
         {
             id: 'colleague-4',
-            title: 'سازمان بورس ایران',
+            title: {
+                en: 'Securities and Exchange Organization of Iran',
+                fa: 'سازمان بورس ایران'
+            },
             logo: ExchangeOrganizationLogo,
             link: 'https://seo.ir'
         },
         {
             id: 'colleague-5',
-            title: 'شرکت توانیر ایران',
+            title: {
+                en: 'Tavanir Co.',
+                fa: 'شرکت توانیر ایران'
+            },
             logo: TavanirLogo,
             link: 'https://tavanir.org.ir'
         },
@@ -63,10 +88,21 @@ const Colleagues = () => {
             ></div>
         </div>
         <BeveledLabel
-            label={"همکاران ما"}
+            label={translation.colleagues}
             fontSize={3}
         />
-        <div className="flex flex-col md:flex-row flex-wrap items-center justify-between w-full lg:w-3/4 mx-auto pt-12">
+        <div className="
+            flex 
+            flex-col 
+            md:flex-row 
+            flex-wrap 
+            items-center 
+            justify-between 
+            w-full 
+            lg:w-3/4 
+            mx-auto 
+            pt-12"
+        >
             {
                 colleagues.map((colleague, index) =>
                     <MotionWrapper
@@ -84,11 +120,17 @@ const Colleagues = () => {
                             <Link
                                 href={colleague.link}
                                 target="_blank"
-                                className="grayscale hover:grayscale-0 transition-all duration-500 ease-in-out"
+                                className="
+                                    grayscale 
+                                    hover:grayscale-0 
+                                    transition-all 
+                                    duration-500 
+                                    ease-in-out
+                                "
                             >
                                 <Image
                                     src={colleague.logo}
-                                    alt={colleague.title}
+                                    alt={colleague.title[language]}
                                 />
                             </Link>
                         </div>

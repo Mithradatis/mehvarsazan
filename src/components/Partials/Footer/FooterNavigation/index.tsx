@@ -4,11 +4,11 @@ import { fetchGraphQL } from "@/utils/fetchGraphQL";
 import gql from "graphql-tag";
 import Link from "next/link";
 
-async function getMenu() {
+async function getMenu(language: string) {
     const menuQuery = gql`
-    query MenuQuery {
+    query MenuQuery($language: LanguageCodeFilterEnum) {
       menuItems(
-        where: { location: FOOTER_MENU }
+        where: { location: FOOTER_MENU, language: $language }
         first: 1000
       ) {
         nodes {
@@ -24,7 +24,12 @@ async function getMenu() {
 
     const response = await fetchGraphQL<{
         menuItems: any;
-    }>(print(menuQuery));
+    }>(
+      print(menuQuery),
+      {
+        language: language.toUpperCase()
+      }
+    );
 
     if (!response || !response.menuItems) {
         return null;
@@ -33,8 +38,8 @@ async function getMenu() {
     return response.menuItems.nodes;
 }
 
-export default async function Navigation() {
-    const menuItems = await getMenu();
+export default async function Navigation({language}: {language: string}) {
+    const menuItems = await getMenu(language);
 
     return (
         <nav

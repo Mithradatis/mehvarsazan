@@ -6,6 +6,9 @@ import { getPersianDate } from "@/utils/dateTimeHandler";
 import Link from "next/link";
 import Image from "next/image";
 import BeveledLabel from "@/components/Globals/BeveledLabel";
+import { LanguageType } from "@/types/language";
+import Translation from "@/types/translation";
+import { fetchTranslations } from "@/app/api/translation/translationsFetcher";
 
 interface Post {
     node: {
@@ -50,7 +53,7 @@ async function getLatestPosts() {
                 }
             }
         }
-  `;
+   `;
 
     const response = await fetchGraphQL<{
         posts: any;
@@ -62,10 +65,18 @@ async function getLatestPosts() {
 
     return response.posts.edges;
 }
-const LastNews = async () => {
+const LastNews = async (
+    {
+        language
+    }: {
+        language: LanguageType
+    }
+) => {
     const posts = await getLatestPosts();
+    const translation: Translation = await fetchTranslations(language);
 
-    return <section 
+    return <section
+                dir="rtl" 
                 id="latest-news" 
                 className="
                     relative 
@@ -108,13 +119,31 @@ const LastNews = async () => {
                     xl:after:h-1
                     xl:after:bg-[#7fc1e4]
                 ">
-                    <BeveledLabel label={"آخرین اخبار"} />
+                    <BeveledLabel 
+                        label={translation.last_news} 
+                        fontSize={2.5}
+                        extraClasses={language === 'fa' ? '' : 'mt-2'}
+                    />
                 </h3>
             </div>
-            <div className="flex flex-wrap items-start justify-center md:gap-12 gap-6 w-full lg:w-3/4 mx-auto relative">
+            <div className="
+                flex 
+                flex-wrap 
+                items-start 
+                justify-center 
+                md:gap-12 
+                gap-6 
+                w-full 
+                lg:w-3/4 
+                mx-auto 
+                relative"
+            >
                 {
                     posts.map(async (post: Post, index: number) => {
-                        return <div className={`w-full lg:flex-1 card rounded-2xl overflow-hidden ${index !== 1 ? 'md:mt-12' : ''}`} key={post.node.id}>
+                        return <div 
+                            className={`w-full lg:flex-1 card rounded-2xl overflow-hidden ${index !== 1 ? 'md:mt-12' : ''}`} 
+                            key={post.node.id}
+                        >
                             <Link href={post.node.slug}>
                                 <div className={`
                                     relative 
@@ -142,13 +171,30 @@ const LastNews = async () => {
                                         className="relative z-20"
                                     />
                                 </div>
-                                <div className={`md:w-[calc(100%-1rem)] w-full p-4 border border-t-0 border-1 border-cyan-400 bg-slate-50 rounded-br-2xl rounded-bl-2xl ${ index !== 0 ? index !== 2 ? 'md:mx-auto' : 'md:ml-auto' : 'md:mr-auto' }`}>
+                                <div className={`
+                                        md:w-[calc(100%-1rem)] 
+                                        w-full 
+                                        p-4 
+                                        border 
+                                        border-t-0 
+                                        border-1 
+                                        border-cyan-400 
+                                        bg-slate-50 
+                                        rounded-br-2xl 
+                                        rounded-bl-2xl 
+                                        ${ index !== 0 ? index !== 2 ? 'md:mx-auto' : 'md:me-auto' : 'md:ms-auto' }`
+                                    }
+                                >
                                     <h4 className="mb-4 text-justify">
                                         {
                                             post.node.title
                                         }
                                     </h4>
-                                    <p className="text-slate-500 text-sm">{getPersianDate(post.node.date)}</p>
+                                    <p className="text-slate-500 text-sm">
+                                        {
+                                            getPersianDate(post.node.date)
+                                        }
+                                    </p>
                                 </div>
                             </Link>
                         </div>

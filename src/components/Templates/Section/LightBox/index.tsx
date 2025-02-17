@@ -4,7 +4,7 @@ import MainSlider from "@/components/Templates/Section/LightBox/main-slider";
 const LightBox = async () => {
     return (
         <section className="flex xl:flex-row lg:flex-row md:flex-col flex-col items-center justify-between md:px-0 relative z-20">
-            <div className="xl:mr-[12.5%] lg:text-right text-center mx-auto flex-1 min-w-1/2 px-0 pb-12 md:px-4 hidden">
+            <div className="xl:ms-[12.5%] lg:text-right text-center mx-auto flex-1 min-w-1/2 px-0 pb-12 md:px-4 hidden">
                 <h1 className="
                     xl:text-7xl 
                     lg:text-7xl 
@@ -64,7 +64,7 @@ const LightBox = async () => {
                     </MotionWrapper>
                 </div>
                 <div
-                    className="scene w-[90%] sm:w-full md:w-[120%] lg:w-[500px] xl:w-[600px] h-[100px] ml-0 mr-auto relative"
+                    className="scene w-[90%] sm:w-full md:w-[120%] lg:w-[500px] xl:w-[600px] h-[100px] me-0 ms-auto relative"
                     style={{
                         perspective: '800px'
                     }}

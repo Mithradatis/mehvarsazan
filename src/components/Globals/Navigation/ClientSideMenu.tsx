@@ -32,7 +32,7 @@ const renderSubMenu = (item: any, openSubMenuIds: Set<string>, toggleSubMenu: (i
                 )}
             </Link>
             {item.children && item.children.length > 0 && isSubMenuOpen && (
-                <div className="pr-4">
+                <div className="ps-4">
                     {item.children.map((child: any) => renderSubMenu(child, openSubMenuIds, toggleSubMenu))}
                 </div>
             )}
@@ -74,7 +74,7 @@ const ClientSideMenu = ({ menuItems }: { menuItems: any }) => {
             </button>
             <span 
                 className="
-                mr-3 
+                ms-3 
                 text-white
                 text-demi-bold 
                 text-xl"

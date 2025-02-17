@@ -5,12 +5,23 @@ import ProductsVideoThumbnail from "@/assets/images/products-video.png";
 import { useModal } from "@/hooks/useModal";
 import BeveledLabel from "@/components/Globals/BeveledLabel";
 import { motion } from "motion/react";
+import { LanguageType } from "@/types/language";
+import Translation from "@/types/translation";
 
-const Product = () => {
+const Product = (
+    { 
+        language, 
+        translation 
+    }: { 
+        language: LanguageType, 
+        translation: Translation 
+    }
+) => {
     const { handleOpen } = useModal();
     const pathLength = 100;
 
     return <section
+        dir="rtl"
         id="product"
         className="
             relative
@@ -21,8 +32,23 @@ const Product = () => {
         "
     >
         <div className="2xl:container mx-auto relative px-4">
-            <div className="relative block lg:items-stretch lg:justify-between justify-center has-connection">
-                <div className="relative top-0 right-0 2xl:float-start 2xl:w-1/2 mx-auto text-center">
+            <div className="
+                relative 
+                block 
+                lg:items-stretch 
+                lg:justify-between 
+                justify-center 
+                has-connection"
+            >
+                <div className={`
+                    relative 
+                    top-0 
+                    right-0 
+                    2xl:w-1/2 
+                    mx-auto 
+                    text-center
+                    ${language === 'fa' ? '2xl:float-start' : '2xl:float-end'}`}
+                >
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 250" className="hidden 2xl:block">
                         <defs>
                             <motion.path
@@ -78,7 +104,10 @@ const Product = () => {
                         2xl:border-[#7fc1e4]
                         mb-6
                     ">
-                        <BeveledLabel label="محصولات" fontSize={2} />
+                        <BeveledLabel
+                            label={translation.products}
+                            fontSize={2}
+                        />
                     </h3>
                 </div>
                 <div className="
@@ -101,25 +130,35 @@ const Product = () => {
                         src={ProductsVideoThumbnail}
                         alt={"Products"}
                     />
-                    <div className="play absolute cursor-pointer" onClick={() => handleOpen(
-                        {
-                            title: "محصولات",
-                            content: (
-                                <video
-                                    className="w-full h-full"
-                                    controls
-                                    autoPlay
-                                >
-                                    <source src={"/reera.mp4"} type="video/mp4" />
-                                </video>
-                            )
-                        }
-                    )}>
+                    <div
+                        className="play absolute cursor-pointer"
+                        onClick={() => handleOpen(
+                            {
+                                title: "محصولات",
+                                content: (
+                                    <video
+                                        className="w-full h-full"
+                                        controls
+                                        autoPlay
+                                    >
+                                        <source src={"/reera.mp4"} type="video/mp4" />
+                                    </video>
+                                )
+                            }
+                        )}
+                    >
                         <span className="play-icon"></span>
                         <span className="play-icon-1"></span>
                     </div>
                 </div>
-                <div className="relative bottom-0 left-0 2xl:float-end 2xl:w-1/2 text-center">
+                <div className={`
+                    relative 
+                    bottom-0 
+                    left-0 
+                    2xl:w-1/2 
+                    text-center
+                    ${language === 'fa' ? '2xl:float-end' : '2xl:float-start'}`}
+                >
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 250" className="hidden 2xl:block">
                         <defs>
                             <path id="path2" strokeWidth="2" strokeLinecap="round"
@@ -134,12 +173,10 @@ const Product = () => {
                         </defs>
                         <use className="path" xlinkHref="#path2" mask="url(#mask2)" />
                     </svg>
-                    <h3 className="
+                    <h3 className={`
                         text-center
                         md:inline-flex
                         2xl:absolute
-                        2xl:bottom-[58px]
-                        2xl:left-[98px]
                         2xl:-rotate-90
                         2xl:bg-gradient-to-r
                         2xl:from-[#f3f4f6]
@@ -152,8 +189,12 @@ const Product = () => {
                         2xl:border-r-[3.5px] 
                         2xl:border-[#7fc1e4]
                         pb-6
-                    ">
-                        <BeveledLabel label="خدمات" fontSize={2} />
+                        ${language === 'fa' ? '2xl:left-[98px] 2xl:bottom-[58px]' : '2xl:left-[85px] 2xl:bottom-[75px]'}
+                    `}>
+                        <BeveledLabel
+                            label={translation.services}
+                            fontSize={2}
+                        />
                     </h3>
                 </div>
             </div>

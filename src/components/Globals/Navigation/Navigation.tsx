@@ -9,13 +9,10 @@ type MenuItemWithChildren = MenuItem & {
   children?: MenuItemWithChildren[];
 };
 
-async function getMenu() {
+async function getMenu(language: string) {
   const menuQuery = gql`
-    query MenuQuery {
-      menuItems(
-        where: { location: PRIMARY_MENU }
-        first: 1000
-      ) {
+    query MenuQuery($language: LanguageCodeFilterEnum) {
+      menuItems(where: {location: PRIMARY_MENU, language: $language}, first: 1000) {
         nodes {
           id
           uri
@@ -29,7 +26,12 @@ async function getMenu() {
 
   const response = await fetchGraphQL<{
     menuItems: RootQueryToMenuItemConnection;
-  }>(print(menuQuery));
+  }>(
+    print(menuQuery),
+    {
+      language: language.toUpperCase()
+    }
+  );
 
   if (!response || !response.menuItems) {
     return null;
@@ -67,8 +69,8 @@ async function getMenu() {
 
 const ClientSideMenu = dynamic(() => import("./ClientSideMenu"), {});
 
-export default async function Navigation() {
-  const menuItems = await getMenu();
+export default async function Navigation({language}: {language: string}) {
+  const menuItems = await getMenu(language);
 
   return (
     <nav

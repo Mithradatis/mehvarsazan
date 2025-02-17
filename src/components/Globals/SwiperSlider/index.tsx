@@ -31,6 +31,7 @@ const SwiperSlider = (
       spaceBetween={10}
       slidesPerView={1}
       loop={true}
+      initialSlide={options?.initialSlide || 0}
       autoplay={{
         delay: options?.autoplay?.delay || DEFAULT_DELAY,
         pauseOnMouseEnter: true,
