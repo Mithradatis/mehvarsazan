@@ -20,9 +20,9 @@ async function getWidget(language: string) {
         widget: any;
     }>(
         print(widgetQuery), {
-            slug: `footer-contact-${language}`,
-            idType: 'URI'
-        }
+        slug: `footer-contact-${language}`,
+        idType: 'URI'
+    }
     );
 
     if (!response || !response.widget) {
@@ -34,7 +34,7 @@ async function getWidget(language: string) {
     return widget;
 }
 
-const FooterContact = async ({language}: {language: LanguageType}) => {
+const FooterContact = async ({ language }: { language: LanguageType }) => {
     const content = await getWidget(language);
     const translation: Translation = await fetchTranslations(language);
 
@@ -45,11 +45,14 @@ const FooterContact = async ({language}: {language: LanguageType}) => {
                     translation.contact
                 }
             </h4>
-            <p className="text-white text-sm leading-8">
-                {
-                    parseHTML(content.content)
-                }
-            </p>
+            {
+                content.content &&
+                <p className="text-white text-sm leading-8">
+                    {
+                        parseHTML(content.content)
+                    }
+                </p>
+            }
         </div>
     )
 }

@@ -5,7 +5,6 @@ import Services from "@/components/Templates/Section/Services";
 import LastNews from "@/components/Templates/Section/LastNews";
 import Gallery from "@/components/Templates/Section/Gallery";
 import Colleagues from "@/components/Templates/Section/Colleagues";
-import { LanguageType } from "@/types/language";
 import { fetchTranslations } from "@/app/api/translation/translationsFetcher";
 import Translation from "@/types/translation";
 import languages from "@/lib/language";
