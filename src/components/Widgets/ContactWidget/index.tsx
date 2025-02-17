@@ -45,7 +45,7 @@ const ContactWidget = async () => {
             <h4 className={"text-bold text-white text-3xl mb-4"}>تماس با ما</h4>
             <p className="text-white text-sm leading-8 font-bold">
                 {
-                    parseHTML(contact.content)
+                    parseHTML(contact.content || '')
                 }
             </p>
         </div>

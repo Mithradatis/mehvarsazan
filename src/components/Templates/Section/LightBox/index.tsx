@@ -126,7 +126,7 @@ const LightBox = async () => {
                             z-30"
                         >
                             <p className="mt-8 lg:mt-16 text-base lg:text-lg text-justify text-gray-500">
-                                {parseHTML(content.content)}
+                                {parseHTML(content || '')}
                             </p>
                         </div>
                     </div>

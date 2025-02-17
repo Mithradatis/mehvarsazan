@@ -187,7 +187,7 @@ const Introduction = async (
                     "
                 >
                     {
-                        stripHtmlTags(aboutUs.content)
+                        stripHtmlTags(aboutUs.content || '')
                     } 
                 </div>
                 <Image
