@@ -135,7 +135,7 @@ const Introduction = async (
                     md:before:border-r-[#3F74E6]"
                 >
                     {
-                        parseHTML(shortHistory.content || '')
+                        parseHTML(shortHistory?.content || '')
                     }
                 </div>
             </div>
@@ -187,7 +187,7 @@ const Introduction = async (
                     "
                 >
                     {
-                        stripHtmlTags(aboutUs.content || '')
+                        stripHtmlTags(aboutUs?.content || '')
                     } 
                 </div>
                 <Image

@@ -9,7 +9,7 @@ const Modal = () => {
   return (
     <ModalComponent>
         {
-          modalState.content || null
+          modalState?.content || ''
         }
     </ModalComponent>
   )

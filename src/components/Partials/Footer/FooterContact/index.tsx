@@ -46,7 +46,7 @@ const FooterContact = async ({ language }: { language: LanguageType }) => {
                 }
             </h4>
             {
-                content.content &&
+                content?.content &&
                 <p className="text-white text-sm leading-8">
                     {
                         parseHTML(content.content)
