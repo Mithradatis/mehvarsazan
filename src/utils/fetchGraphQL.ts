@@ -4,6 +4,7 @@ export async function fetchGraphQL<T = unknown>(
   query: string,
   variables?: { [key: string]: any },
   headers?: { [key: string]: string },
+  revalidateTime?: number,
 ): Promise<T> {
   const { isEnabled: preview } = await draftMode();
 
@@ -35,8 +36,9 @@ export async function fetchGraphQL<T = unknown>(
           ...headers,
         },
         body,
-        cache: preview ? "no-cache" : "default",
+        cache: preview ? "no-cache" : "force-cache",
         next: {
+          revalidate: revalidateTime || 60,
           tags: ["wordpress"],
         },
       },
