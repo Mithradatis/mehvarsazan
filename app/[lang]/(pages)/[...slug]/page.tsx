@@ -3,7 +3,6 @@ import { notFound } from "next/navigation";
 import { print } from "graphql/language/printer";
 
 import { setSeoData } from "@/utils/seoData";
-
 import { fetchGraphQL } from "@/utils/fetchGraphQL";
 import { ContentInfoQuery } from "@/queries/general/ContentInfoQuery";
 import { ContentNode } from "@/gql/graphql";
@@ -16,6 +15,38 @@ import { PageParams } from "@/types/page-params";
 type Props = {
   params: Promise<PageParams>;
 };
+
+export async function getStaticProps({ params }: Props) {
+  const resolvedParams = await params;
+  const slug = await nextSlugToWpSlug(resolvedParams.slug || '');
+  const decodedSlug = decodeURIComponent(slug);
+  const isPreview = slug.includes("preview");
+
+  const { contentNode } = await fetchGraphQL<{ contentNode: ContentNode & { seo: unknown } }>(
+    print(SeoQuery),
+    {
+      slug: isPreview ? slug.split("preview/")[1] : decodedSlug,
+      idType: isPreview ? "DATABASE_ID" : "URI",
+    },
+  );
+
+  if (!contentNode) {
+    return {
+      notFound: true,
+    };
+  }
+
+  const metadata = setSeoData({ seo: contentNode.seo });
+
+  return {
+    props: {
+      contentNode,
+      metadata,
+      resolvedParams
+    },
+    revalidate: 60,
+  };
+}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const resolvedParams = await params;
