@@ -105,14 +105,14 @@ const LastNews = async (
                     bg-[#f6f7f8] 
                     py-4
                     xl:before:absolute
-                    xl:before:left-[50%]
+                    xl:before:end-[50%]
                     xl:before:translate-x-[-50%]
                     xl:before:top-0
                     xl:before:w-8
                     xl:before:h-1
                     xl:before:bg-[#7fc1e4]
                      xl:after:absolute
-                    xl:after:left-[50%]
+                    xl:after:end-[50%]
                     xl:after:translate-x-[-50%]
                     xl:after:bottom-0
                     xl:after:w-8

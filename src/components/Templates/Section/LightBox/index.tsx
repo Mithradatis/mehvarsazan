@@ -4,7 +4,7 @@ import MainSlider from "@/components/Templates/Section/LightBox/main-slider";
 const LightBox = async () => {
     return (
         <section className="flex xl:flex-row lg:flex-row md:flex-col flex-col items-center justify-between md:px-0 relative z-20">
-            <div className="xl:ms-[12.5%] lg:text-right text-center mx-auto flex-1 min-w-1/2 px-0 pb-12 md:px-4 hidden">
+            <div className="xl:ms-[12.5%] lg:text-start text-center mx-auto flex-1 min-w-1/2 px-0 pb-12 md:px-4 hidden">
                 <h1 className="
                     xl:text-7xl 
                     lg:text-7xl 
@@ -43,11 +43,11 @@ const LightBox = async () => {
                         <Image
                             className={`
                                 relative 
-                                left-[20px]
-                                sm:left-[50px] 
-                                md:left-[0]
-                                lg:left-[30px]
-                                xl:left-[50px] 
+                                end-[20px]
+                                sm:end-[50px] 
+                                md:end-[0]
+                                lg:end-[30px]
+                                xl:end-[50px] 
                                 bottom-[-80px] 
                                 lg:bottom-[-81px] 
                                 z-[3]
@@ -80,7 +80,7 @@ const LightBox = async () => {
                             origin-top-left
                             overflow-hidden
                             top-0
-                            left-0
+                            end-0
                             z-40"
                         >
                             <div className="
@@ -99,12 +99,12 @@ const LightBox = async () => {
                             lg:w-[83px]
                             h-[200px]
                             top-[40px]
-                            md:left-[13px]
-                            left-[9px]
+                            md:end-[13px]
+                            end-[9px]
                             bg-gradient-to-br from-[#f1f1f1] via-[#f7f7f7] to-[#ffffff]  via-[20%] to-[40%]
                             md:skew-y-[40deg]
                             skew-y-[60deg]
-                            origin-left-top
+                            origin-end-top
                             rounded-tl-[3px]
                             z-20"
                         ></div>
@@ -119,8 +119,8 @@ const LightBox = async () => {
                             md:w-[98.5%]
                             h-[200px]
                             top-[70px]
-                            left-[46px]
-                            md:left-[95px]
+                            end-[46px]
+                            md:end-[95px]
                             rounded-tr-[5px]
                             bg-gradient-to-b from-[#e7e7e7] via-[#f1f1f1] to-white from-0% via-[20%] to-[40%]
                             z-30"

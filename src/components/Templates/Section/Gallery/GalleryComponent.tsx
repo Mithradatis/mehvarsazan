@@ -74,7 +74,7 @@ const GalleryComponent = (
                                 after:absolute
                                 after:z-10
                                 after:top-0
-                                after:left-0
+                                after:end-0
                                 after:bg-blue-400
                                 after:opacity-20
                                 after:rounded-2xl

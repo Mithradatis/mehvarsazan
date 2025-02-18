@@ -24,7 +24,7 @@ const SubMenuItem = ({
               hover:bg-dark-800 
               rounded 
               flex-grow 
-              text-right 
+              text-start 
               hover:translate-x-[-5px] 
               transition-all
             "

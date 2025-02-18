@@ -79,8 +79,8 @@ const Gallery = async ({language}: {language: LanguageType}) => {
             before:absolute
             before:z-1
             before:top-[-15%]
-            lg:before:left-[15%]
-            before:left-0
+            lg:before:end-[15%]
+            before:end-0
             lg:before:w-[70%]
             before:w-full
             before:h-[130%]

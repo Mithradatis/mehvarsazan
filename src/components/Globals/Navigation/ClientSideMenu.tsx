@@ -23,7 +23,7 @@ const renderSubMenu = (item: any, openSubMenuIds: Set<string>, toggleSubMenu: (i
                             e.preventDefault();
                             toggleSubMenu(item.id);
                         }}
-                        className="text-white absolute w-full h-full left-0 top-0 flex items-center justify-end"
+                        className="text-white absolute w-full h-full end-0 top-0 flex items-center justify-end"
                     >
                         <span>
                             {isSubMenuOpen ? "▲" : "▼"}
@@ -84,7 +84,7 @@ const ClientSideMenu = ({ menuItems }: { menuItems: any }) => {
                 }
             </span>
             {isMenuOpen && (
-                <div className="absolute top-full right-[2%] bg-[rgba(34,34,34,.9)] backdrop-blur-md p-4 rounded-b-md w-[96%]">
+                <div className="absolute top-full start-[2%] bg-[rgba(34,34,34,.9)] backdrop-blur-md p-4 rounded-b-md w-[96%]">
                     {menuItems?.map((item: any) => renderSubMenu(item, openSubMenuIds, toggleSubMenu))}
                 </div>
             )}

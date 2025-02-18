@@ -43,7 +43,7 @@ const Product = (
                 <div className={`
                     relative 
                     top-0 
-                    right-0 
+                    start-0 
                     2xl:w-1/2 
                     mx-auto 
                     text-center
@@ -122,8 +122,8 @@ const Product = (
                     pt-4
                     pb-12
                     mx-auto 
-                    left-0 
-                    right-0"
+                    end-0 
+                    start-0"
                 >
                     <Image
                         className="min-w-3/4 md:min-w-[350px] xl:w-[350px] mx-auto"
@@ -154,7 +154,7 @@ const Product = (
                 <div className={`
                     relative 
                     bottom-0 
-                    left-0 
+                    end-0 
                     2xl:w-1/2 
                     text-center
                     ${language === 'fa' ? '2xl:float-end' : '2xl:float-start'}`}

@@ -10,7 +10,7 @@ const MenuLink = ({ item }: { item: MenuItemWithChildren }) => {
     const hasChildren = item.children && item.children.length > 0;
   
     return (
-      <div className="menu-item relative group lg:flex space-x-8 hidden">
+      <div className="menu-item relative group lg:flex hidden">
         <Link
           itemProp="url"
           href={item.uri || ''}
@@ -31,7 +31,7 @@ const MenuLink = ({ item }: { item: MenuItemWithChildren }) => {
               hidden
               absolute 
               top-full
-              right-0
+              start-0
               group-hover:block
               bg-[rgba(34,34,34,.7)] 
               backdrop-blur-sm
