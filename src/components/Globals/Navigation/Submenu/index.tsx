@@ -1,52 +1,50 @@
 import { MenuItem } from "@/gql/graphql";
+import { LanguageType } from "@/types/language";
 import Link from "next/link";
 
 type MenuItemWithChildren = MenuItem & {
   children?: MenuItemWithChildren[];
 };
 
+const getHref = (item: MenuItemWithChildren, language: LanguageType) => {
+  const isExternalURL = item.uri?.startsWith("http://") || item.uri?.startsWith("https://");
+
+  if (isExternalURL) {
+    return item.uri || '#';
+  }
+
+  let uri = item.uri || '';
+
+  const basePath = language === "fa" ? "/fa" : "/en";
+
+  if (language === "fa") {
+    uri = uri.replace(/^\/fa\//, '/');
+    uri = `${basePath}${uri.startsWith('/') ? '' : '/'}${uri}`;
+  } else if (language === "en") {
+    uri = uri.replace(/^\/fa\//, '/');
+    uri = `${basePath}${uri.startsWith('/') ? '' : '/'}${uri}`;
+  }
+
+  uri = uri.replace(/\/+/g, '/');
+
+  return uri;
+};
+
 const SubMenuItem = ({
   item,
+  language
 }: {
   item: MenuItemWithChildren;
+  language: LanguageType;
 }) => {
   const hasChildren = item.children && item.children.length > 0;
-  const isExternalURL = item.uri?.startsWith("http://") || item.uri?.startsWith("https://");
+  const href = getHref(item, language);
 
   return (
     <div className="menu-item w-full group/submenu">
       <div className="flex items-center justify-between relative">
-        {isExternalURL ? (
-          // Handle external URLs
-          <a
-            href={item.uri || '#'}
-            target={item.target || "_blank"} // Default to new tab for external links
-            rel="noopener noreferrer" // Security for external links
-            className="
-              block 
-              px-4 
-              py-2 
-              hover:bg-dark-800 
-              rounded 
-              flex-grow 
-              text-start 
-              hover:translate-x-[-5px] 
-              transition-all
-            "
-          >
-            <span className="
-              text-white 
-              text-sm 
-              text-nowrap 
-              text-demi-bold
-            ">
-              {item.label}
-            </span>
-          </a>
-        ) : (
-          // Handle internal links (slugs)
           <Link
-            href={item.uri || '#'}
+            href={href}
             className="
               block 
               px-4 
@@ -69,8 +67,6 @@ const SubMenuItem = ({
               {item.label}
             </span>
           </Link>
-        )}
-
         {hasChildren && (
           <label 
             htmlFor={`submenu-${item.id}`}
@@ -125,6 +121,7 @@ const SubMenuItem = ({
               <SubMenuItem
                 key={child.id}
                 item={child}
+                language={language}
               />
             ))}
           </div>

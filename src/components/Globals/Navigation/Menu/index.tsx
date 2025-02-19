@@ -74,6 +74,7 @@ const MenuLink = ({
                 <SubMenuItem
                   key={child.id}
                   item={child}
+                  language={language}
                 />
               ))
             }
