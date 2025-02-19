@@ -10,6 +10,8 @@ const nextConfig = {
   },
   trailingSlash: true,
   env: {
+    PORT: process.env.NEXT_PUBLIC_PORT,
+    BASE_URL: process.env.NEXT_PUBLIC_BASE_URL,
     WORDPRESS_API_URL: process.env.NEXT_PUBLIC_WORDPRESS_API_URL,
     WORDPRESS_API_HOSTNAME: process.env.NEXT_PUBLIC_WORDPRESS_API_HOSTNAME,
     WP_USER: process.env.NEXT_PUBLIC_WP_USER,
@@ -18,9 +20,9 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: "http",
+        protocol: "https",
         hostname: process.env.NEXT_PUBLIC_WORDPRESS_API_HOSTNAME,
-        port: "",
+        port: ""
       },
     ],
   },

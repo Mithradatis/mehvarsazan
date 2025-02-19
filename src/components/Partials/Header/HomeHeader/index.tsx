@@ -1,8 +1,9 @@
 import Navigation from "@/components/Globals/Navigation/Navigation";
 import LightBox from "@/components/Templates/Section/LightBox";
 import Image from "next/image";
-import Logo from "@/assets/logos/logo.png";
 import LanguageSwitcher from "@/components/Widgets/languageSwitcher";
+import Logo from "@/assets/logos/logo.png";
+import SearchBox from "@/components/Widgets/SearchBox";
 import Translation from "@/types/translation";
 import { fetchTranslations } from "@/app/api/translation/translationsFetcher";
 import { LanguageType } from "@/types/language";
@@ -57,14 +58,9 @@ const HomeHeader = async (
                     </div>
                 </div>
                 <div className="flex items-center">
-                    <div className="me-4">
-                        <input 
-                            className="rounded-lg border border-1 border-slate-300 py-2 px-4"
-                            type="text" 
-                            name="search"
-                            placeholder={translation.search}
-                        />
-                    </div>
+                    <SearchBox
+                        translation={translation}
+                    />
                     <LanguageSwitcher 
                         currentLang={currentLanguage} 
                     />

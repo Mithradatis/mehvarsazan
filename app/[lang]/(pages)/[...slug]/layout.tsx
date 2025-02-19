@@ -10,6 +10,8 @@ import Footer from "@/components/Partials/Footer";
 
 import languages from "@/lib/language";
 import { LayoutParams } from "@/types/page-params";
+import { ModalProvider } from "@/hooks/useModal";
+import Modal from "@/components/Partials/Modal";
 
 type Props = {
   children: React.ReactNode;
@@ -26,27 +28,30 @@ export default async function RootLayout({
 
   return (
     <html lang={lang}>
-      <body 
+      <body
         dir={dir}
-        className="flex flex-col" 
+        className="flex flex-col"
         style={{ minHeight: '100vh' }}
       >
-        {isEnabled && <PreviewNotice />}
-        <Header 
-          currentLanguage={lang} 
-        />
-        <main className="
+        <ModalProvider>
+          {isEnabled && <PreviewNotice />}
+          <Modal />
+          <Header
+            currentLanguage={lang}
+          />
+          <main className="
           flex-1 
           flex 
           items-stretch 
           bg-gradient-to-r 
           from-slate-200 
           to-white">
-          {children}
-        </main>
-        <Footer 
-          currentLanguage={lang} 
-        />
+            {children}
+          </main>
+          <Footer
+            currentLanguage={lang}
+          />
+        </ModalProvider>
       </body>
     </html>
   );

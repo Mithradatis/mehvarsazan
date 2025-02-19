@@ -4,6 +4,7 @@ import { fetchGraphQL } from "@/utils/fetchGraphQL";
 import gql from "graphql-tag";
 import MenuLink from "@/components/Globals/Navigation/Menu";
 import dynamic from "next/dynamic";
+import { LanguageType } from "@/types/language";
 
 type MenuItemWithChildren = MenuItem & {
   children?: MenuItemWithChildren[];
@@ -69,7 +70,13 @@ async function getMenu(language: string) {
 
 const ClientSideMenu = dynamic(() => import("./ClientSideMenu"), {});
 
-export default async function Navigation({language}: {language: string}) {
+export default async function Navigation(
+  {
+    language
+  }: {
+    language: LanguageType
+  }
+) {
   const menuItems = await getMenu(language);
 
   return (
@@ -90,10 +97,18 @@ export default async function Navigation({language}: {language: string}) {
       itemScope
       itemType="http://schema.org/SiteNavigationElement"
     >
-      {menuItems?.map((item: MenuItemWithChildren) => (
-        <MenuLink key={item.id} item={item} />
-      ))}
-      <ClientSideMenu menuItems={menuItems} />
+      {
+        menuItems?.map((item: MenuItemWithChildren) => (
+          <MenuLink
+            key={item.id}
+            item={item}
+            language={language}
+          />
+        ))
+      }
+      <ClientSideMenu 
+        menuItems={menuItems} 
+      />
     </nav>
   );
 }
