@@ -107,6 +107,7 @@ const Product = (
                         <BeveledLabel
                             label={translation.products}
                             fontSize={2}
+                            extraClasses="z-10"
                         />
                     </h3>
                 </div>

@@ -24,7 +24,7 @@ const HomeHeader = async (
                 flex-wrap 
                 items-center
                 justify-center 
-                md:justify-between
+                sm:justify-between
                 w-full 
                 xl:w-3/4 
                 m-auto 

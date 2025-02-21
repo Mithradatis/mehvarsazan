@@ -34,11 +34,11 @@ const GalleryComponent = (
                     <SwiperSlider
                         images={images}
                         options={{
-                            hasNavigation: true,
-                            hasPagination: true,
-                            autoplay: {
-                                delay: 5000
+                            modules: {
+                                hasNavigation: true,
+                                hasPagination: true
                             },
+                            externalNavigationButtons: true,
                             initialSlide: index
                         }}
                     />

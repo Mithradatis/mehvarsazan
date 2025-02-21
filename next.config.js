@@ -1,3 +1,5 @@
+const isDevelopment = process.env.NODE_ENV === 'development';
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   sassOptions: {
@@ -20,7 +22,7 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: "https",
+        protocol: isDevelopment ? 'http' : 'https',
         hostname: process.env.NEXT_PUBLIC_WORDPRESS_API_HOSTNAME,
         port: ""
       },

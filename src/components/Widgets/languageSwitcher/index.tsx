@@ -12,7 +12,16 @@ export default function LanguageSwitcher({ currentLang }: { currentLang: string 
                             href={`/${lang}`}
                             className={currentLang === lang ? 'active' : ''}
                         >
-                            {languages[lang].name}
+                            <span className="hidden md:inline">
+                                {
+                                    languages[lang].name
+                                }
+                            </span>
+                            <span className="inline md:hidden">
+                                {
+                                    languages[lang].abbreviation
+                                }
+                            </span>
                         </Link>
                         {
                             index < Object.keys(languages).length - 1 &&

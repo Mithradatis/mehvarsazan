@@ -78,7 +78,7 @@ const ModalComponent = ({children}: {children: any}) => {
             <CiCircleRemove fontSize={36} />
           </button>
         </div>
-        <div>
+        <div className="overflow-hidden rounded-b-lg before:border-none after:border-none">
           {children}
         </div>
       </div>
