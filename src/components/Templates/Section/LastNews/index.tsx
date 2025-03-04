@@ -167,8 +167,7 @@ const LastNews = async (
                                         width={350}
                                         height={200}
                                         quality={100}
-                                        style={{ width: '100%', height: 'auto' }}
-                                        className="relative z-20"
+                                        className="relative z-20 w-full h-full"
                                     />
                                 </div>
                                 <div className={`

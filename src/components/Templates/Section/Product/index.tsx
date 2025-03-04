@@ -142,7 +142,7 @@ const Product = (
                                         controls
                                         autoPlay
                                     >
-                                        <source src={"/reera.mp4"} type="video/mp4" />
+                                        <source src={`/reera.mp4`} type="video/mp4" />
                                     </video>
                                 )
                             }

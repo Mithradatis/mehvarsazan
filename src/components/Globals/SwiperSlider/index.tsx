@@ -12,7 +12,8 @@ import { imageOptimizer } from 'next/dist/server/image-optimizer';
 const SwiperSlider = (
   {
     images,
-    options
+    options,
+    ...rest
   }: {
     images: any,
     options?: any
@@ -70,6 +71,7 @@ const SwiperSlider = (
         </>
       }
       <Swiper
+        {...rest}
         dir={DIRECTION}
         modules={modules}
         spaceBetween={10}
