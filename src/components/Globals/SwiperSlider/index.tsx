@@ -26,8 +26,6 @@ const SwiperSlider = (
   options?.modules?.hasPagination && modules.push(Pagination);
   options?.autoplay?.delay && modules.push(Autoplay);
 
-  console.log(options?.modules?.hasNavigation);
-
   return (
     <>
       {

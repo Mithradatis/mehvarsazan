@@ -308,29 +308,6 @@ table {
     z-index: 50;
 }
 
-// #main-slider {
-//     width: 100%;
-//     /* Full viewport width (1360px) */
-//     max-height: 85vh;
-//     /* Caps at 765px on smaller screens */
-//     overflow: hidden;
-
-//     img {
-//         width: auto;
-//         /* Width adjusts to maintain aspect ratio */
-//         height: 100%;
-//         /* Full height of slider (up to 765px) */
-//         max-height: 960px;
-//         /* Original image height */
-//         object-fit: contain;
-//         /* Shows full image, no cropping */
-//         object-position: center;
-//         /* Centers horizontally */
-//         display: block;
-//         margin: 0 auto;
-//     }
-// }
-
 @keyframes dash {
     from {
         stroke-dashoffset: 1000;

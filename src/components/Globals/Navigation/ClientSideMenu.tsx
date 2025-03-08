@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import LanguagesEnum from "constants/Languages";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -40,6 +41,19 @@ const renderSubMenu = (item: any, openSubMenuIds: Set<string>, toggleSubMenu: (i
     );
 };
 
+const findActiveMenuItem = (items: any[], pathname: string): any => {
+    for (const item of items) {
+        if (item.uri === pathname) {
+            return item;
+        }
+        if (item.children && item.children.length > 0) {
+            const found = findActiveMenuItem(item.children, pathname);
+            if (found) return found;
+        }
+    }
+    return null;
+};
+
 const ClientSideMenu = ({ menuItems }: { menuItems: any }) => {
     const pathname = usePathname();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -60,7 +74,18 @@ const ClientSideMenu = ({ menuItems }: { menuItems: any }) => {
             return newSet;
         });
     };
-    const activeMenuItem = menuItems.find((item: any) => item.uri === pathname) || { label: "" };
+    
+    let activeMenuItem: any;
+    const languageValues = Object.values(LanguagesEnum) as string[];
+    const pathSegments = pathname.split("/").filter(Boolean);
+    const isLanguageRoot = pathSegments.length === 1 && languageValues.includes(pathSegments[0]);
+
+    if (isLanguageRoot) {
+        activeMenuItem = menuItems[0];
+    } else {
+        activeMenuItem = findActiveMenuItem(menuItems, pathname) || { label: "" };
+    }
+
     return (
         <div className="lg:hidden flex items-center py-4 min-h-[56px]">
             <button
@@ -72,7 +97,7 @@ const ClientSideMenu = ({ menuItems }: { menuItems: any }) => {
                 <span className={`block h-1 bg-white mb-1 ${isMenuOpen ? "hidden" : "w-6"}`}></span>
                 <span className={`block h-1 bg-white mb-1 ${isMenuOpen ? "-rotate-45 w-4" : "w-6"}`}></span>
             </button>
-            <span 
+            <span
                 className="
                 ms-3 
                 text-white

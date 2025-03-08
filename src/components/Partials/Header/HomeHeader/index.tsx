@@ -31,7 +31,7 @@ const HomeHeader = async (
                 xl:px-0 
                 px-4
                 py-2
-                max-h-[10vh]"
+                lg:max-h-[10vh]"
             >
                 <div className="
                     relative 
@@ -50,7 +50,7 @@ const HomeHeader = async (
                         justify-center"
                     >
                         <Image
-                            className="mt-1 max-h-[7.5vh] w-auto"
+                            className="mt-1 lg:max-h-[7.5vh] w-auto"
                             src={Logo}
                             alt={"Mehvar Sazan Iran Khodro Logo"}
                             quality={100}
