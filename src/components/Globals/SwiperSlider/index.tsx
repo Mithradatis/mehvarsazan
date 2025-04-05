@@ -97,7 +97,7 @@ const SwiperSlider = (
         {
           images.map((image: any, index: number) => (
             <SwiperSlide key={index} className="w-full h-auto object-cover mx-0">
-              <figure className="h-full lg:h-auto flex">
+              <figure className="h-full lg:h-full flex">
                 <img
                   src={image?.props?.children[0].props.src || image?.attributes?.url}
                   alt={image?.props?.children[0].props.alt || image?.attributes?.alt || image?.attributes?.title}
