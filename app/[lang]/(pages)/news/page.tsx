@@ -16,6 +16,8 @@ import { getThumbnailUrl } from "@/utils/imageHandler";
 import Link from "next/link";
 import stripHtmlTags from "@/utils/stripHtmlTags";
 import { getPersianDate } from "@/utils/dateTimeHandler";
+import Translation from "@/types/translation";
+import { fetchTranslations } from "@/app/api/translation/translationsFetcher";
 
 type Props = {
     params: Promise<PageParams>;
@@ -94,6 +96,7 @@ export function generateStaticParams() {
 export default async function Page({ params }: Props) {
     const resolvedParams = await params;
     const language = resolvedParams.lang;
+    const translation: Translation = await fetchTranslations(language);
     const posts = await getPosts();
 
     const blogItems = await Promise.all(
@@ -186,7 +189,7 @@ export default async function Page({ params }: Props) {
                                 text-bold 
                                 text-slate-600
                             ">
-                                News
+                                { translation.news }
                             </h1>
                             <div className="
                                 py-8 
