@@ -10,25 +10,6 @@ import { LanguageType } from "@/types/language";
 import Translation from "@/types/translation";
 import { fetchTranslations } from "@/app/api/translation/translationsFetcher";
 
-interface Post {
-    node: {
-        id: string;
-        title: string;
-        slug: string;
-        date: string;
-        featuredImage: {
-            node: {
-                sourceUrl: string;
-                altText: string;
-                mediaDetails: {
-                    width: number;
-                    height: number;
-                };
-            };
-        };
-    }
-}
-
 async function getLatestPosts() {
     const LatestPostsQuery = gql`
         query LatestPosts {
@@ -65,6 +46,7 @@ async function getLatestPosts() {
 
     return response.posts.edges;
 }
+
 const LastNews = async (
     {
         language

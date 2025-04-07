@@ -13,7 +13,12 @@ interface TemplateProps {
   language: LanguageType;
 }
 
-export default async function PageTemplate({ node, language }: TemplateProps) {
+export default async function PageTemplate(
+  { 
+    node, 
+    language 
+  }: TemplateProps
+) {
   const { page }: any = await fetchGraphQL<{ page: Page }>(
     print(PageQuery), 
     {
@@ -80,7 +85,11 @@ export default async function PageTemplate({ node, language }: TemplateProps) {
               id="page-content"
             >
                 <BlockRenderer 
-                  blocks={ReactHtmlParser(page?.content || '')} 
+                  blocks={
+                    ReactHtmlParser(
+                      page?.content || ''
+                    )
+                  } 
                 />
             </div>
           </div>
