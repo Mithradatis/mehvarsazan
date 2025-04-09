@@ -92,7 +92,6 @@ export default async function Navigation(
         !py-0 
         lg:!px-8
         !px-4
-        lg:max-h-[5vh]
       "
       role="navigation"
       itemScope
