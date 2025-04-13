@@ -34,7 +34,7 @@ const Services = ({language}: {language: LanguageType}) => {
             },
             link: {
                 en:'announcements',
-                fa:'اطلاعیه‌ها'
+                fa:'اطلاعیه'
             },
             target: '_self'
         },
