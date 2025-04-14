@@ -59,8 +59,8 @@ const Services = ({language}: {language: LanguageType}) => {
                 fa: 'فروشگاه اینترنتی'
             },
             link: {
-                en:'online-shop',
-                fa:'فروشگاه-اینترنتی'
+                en:'https://eikamco.ir/',
+                fa:'https://eikamco.ir/'
             },
             target: '_blank'
         },
