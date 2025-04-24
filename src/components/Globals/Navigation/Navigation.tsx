@@ -13,7 +13,7 @@ type MenuItemWithChildren = MenuItem & {
 async function getMenu(language: string) {
   const menuQuery = gql`
     query MenuQuery($language: LanguageCodeFilterEnum) {
-      menuItems(where: {location: PRIMARY_MENU, language: $language}, first: 1000) {
+      menuItems(where: {location: PRIMARY, language: $language}, first: 1000) {
         nodes {
           id
           uri

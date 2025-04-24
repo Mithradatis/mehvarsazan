@@ -47,7 +47,7 @@ const MenuLink = ({
         itemProp="url"
         href={href}
         target={item.target || "_self"}
-        className="block py-4"
+        className="block py-4 font-bold"
       >
         <span itemProp="name" className="text-white">
           {item.label}
