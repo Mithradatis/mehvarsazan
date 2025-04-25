@@ -55,11 +55,14 @@ const SubMenuItem = ({
               text-start 
               hover:translate-x-[-5px] 
               transition-all
+              text-white
+              hover:text-[#dec913]
+              duration-200 
+              ease-in
             "
             target={item.target || "_self"}
           >
             <span className="
-              text-white 
               text-sm 
               text-nowrap 
               text-demi-bold
@@ -82,6 +85,10 @@ const SubMenuItem = ({
               justify-end
               w-full
               h-full
+              hover:text-[#dec913] 
+              transition
+              duration-200 
+              ease-in
             "
           >
             <svg 

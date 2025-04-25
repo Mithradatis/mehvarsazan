@@ -47,9 +47,15 @@ const MenuLink = ({
         itemProp="url"
         href={href}
         target={item.target || "_self"}
-        className="block py-4 font-bold"
+        className="
+          block 
+          py-4 
+          font-bold text-white hover:text-[#dec913] 
+          transition 
+          duration-200 
+          ease-in"
       >
-        <span itemProp="name" className="text-white">
+        <span itemProp="name">
           {item.label}
         </span>
       </Link>

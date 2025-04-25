@@ -50,7 +50,15 @@ export default async function Navigation({language}: {language: string}) {
         >
             {menuItems && menuItems.map((item: MenuItem, index: number) => (
                 <Link
-                    className="text-white text-demi-bold block text-shadow drop-shadow-[1px_1px_0_rgba(0,0,0,.25)]"
+                    className="
+                    text-white 
+                    text-demi-bold 
+                    block text-shadow 
+                    drop-shadow-[1px_1px_0_rgba(0,0,0,.25)] 
+                    hover:text-[#dec913]
+                    transition
+                    duration-200
+                    ease-in"
                     href={item.uri || ''}
                     key={item.id}
                 >
