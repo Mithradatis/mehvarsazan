@@ -57,10 +57,11 @@ const LastNews = async (
     const posts = await getLatestPosts();
     const translation: Translation = await fetchTranslations(language);
 
-    return <section
-                dir="rtl" 
-                id="latest-news" 
-                className="
+    return (
+        <section
+            dir="rtl"
+            id="latest-news"
+            className="
                     relative 
                     bg-gradient-to-b 
                     from-gray-100 
@@ -69,11 +70,11 @@ const LastNews = async (
                     md:lg-0
                     pb-12
                 "
-            >
-        <div className="2xl:container mx-auto relative px-4 pt-12 xl:pt-0">
-            <div className="flex flex-col items-center justify-center xl:min-h-[200px] mx-auto">
-                <div className="dashed-line mx-auto hidden xl:block"></div>
-                <h3 className="
+        >
+            <div className="2xl:container mx-auto relative px-4 pt-12 xl:pt-0">
+                <div className="flex flex-col items-center justify-center xl:min-h-[200px] mx-auto">
+                    <div className="dashed-line mx-auto hidden xl:block"></div>
+                    <h3 className="
                     xl:h-[5rem]
                     mt-2
                     mb-6
@@ -101,14 +102,14 @@ const LastNews = async (
                     xl:after:h-1
                     xl:after:bg-[#7fc1e4]
                 ">
-                    <BeveledLabel 
-                        label={translation.last_news} 
-                        fontSize={2.5}
-                        extraClasses={language === 'fa' ? '' : 'mt-2'}
-                    />
-                </h3>
-            </div>
-            <div className="
+                        <BeveledLabel
+                            label={translation.last_news}
+                            fontSize={2.5}
+                            extraClasses={language === 'fa' ? '' : 'mt-2'}
+                        />
+                    </h3>
+                </div>
+                <div className="
                 flex 
                 flex-wrap 
                 items-start 
@@ -119,40 +120,40 @@ const LastNews = async (
                 lg:w-3/4 
                 mx-auto 
                 relative"
-            >
-                {
-                    posts.map(async (post: Post, index: number) => {
-                        return <div 
-                            className={`w-full lg:flex-1 card rounded-2xl overflow-hidden ${index !== 1 ? 'md:mt-12' : ''}`} 
-                            key={post.node.id}
-                        >
-                            <Link href={post.node.slug}>
-                                <div className={`
+                >
+                    {
+                        posts.map(async (post: Post, index: number) => {
+                            return <div
+                                className={`w-full lg:flex-1 card rounded-2xl overflow-hidden ${index !== 1 ? 'md:mt-12' : ''}`}
+                                key={post.node.id}
+                            >
+                                <Link href={post.node.slug}>
+                                    <div className={`
                                     relative 
                                     z-20
                                     min-h-48
                                     xl:h-48
                                     h-auto 
                                     overflow-hidden
-                                    ${ index !== 0 ? index !== 2 ? 'md:rounded-2xl' : 'md:rounded-bl-2xl' : 'md:rounded-br-2xl' }`
-                                }>
-                                    <Image
-                                        src={
-                                            await getThumbnailUrl(
-                                                post.node.featuredImage.node.sourceUrl,
-                                                300,
-                                                post.node.featuredImage.node.mediaDetails.width,
-                                                post.node.featuredImage.node.mediaDetails.height
-                                            )
-                                        }
-                                        alt={ post.node.title }
-                                        width={350}
-                                        height={200}
-                                        quality={100}
-                                        className="relative z-20 w-full h-full"
-                                    />
-                                </div>
-                                <div className={`
+                                    ${index !== 0 ? index !== 2 ? 'md:rounded-2xl' : 'md:rounded-bl-2xl' : 'md:rounded-br-2xl'}`
+                                    }>
+                                        <Image
+                                            src={
+                                                await getThumbnailUrl(
+                                                    post.node.featuredImage.node.sourceUrl,
+                                                    300,
+                                                    post.node.featuredImage.node.mediaDetails.width,
+                                                    post.node.featuredImage.node.mediaDetails.height
+                                                )
+                                            }
+                                            alt={post.node.title}
+                                            width={350}
+                                            height={200}
+                                            quality={100}
+                                            className="relative z-20 w-full h-full"
+                                        />
+                                    </div>
+                                    <div className={`
                                         md:w-[calc(100%-1rem)] 
                                         w-full 
                                         p-4 
@@ -163,27 +164,54 @@ const LastNews = async (
                                         bg-slate-50 
                                         rounded-br-2xl 
                                         rounded-bl-2xl 
-                                        ${ index !== 0 ? index !== 2 ? 'md:mx-auto' : 'md:me-auto' : 'md:ms-auto' }`
+                                        ${index !== 0 ? index !== 2 ? 'md:mx-auto' : 'md:me-auto' : 'md:ms-auto'}`
                                     }
-                                >
-                                    <h4 className="mb-4 text-justify">
-                                        {
-                                            post.node.title
-                                        }
-                                    </h4>
-                                    <p className="text-slate-500 text-sm">
-                                        {
-                                            getPersianDate(post.node.date)
-                                        }
-                                    </p>
-                                </div>
-                            </Link>
-                        </div>
-                    })
-                }
+                                    >
+                                        <h4 className="mb-4 text-justify">
+                                            {
+                                                post.node.title
+                                            }
+                                        </h4>
+                                        <p className="text-slate-500 text-sm">
+                                            {
+                                                getPersianDate(post.node.date)
+                                            }
+                                        </p>
+                                    </div>
+                                </Link>
+                            </div>
+                        })
+                    }
+                </div>
             </div>
-        </div>
-    </section>
+            <div className="text-center mt-10 lg:mt-0">
+                <Link 
+                    href="/news"
+                >
+                    <span 
+                        className="
+                        font-bold
+                        text-xl
+                        text-blue-800
+                        rounded-xl
+                        border-[3px]
+                        border-[rgba(127,193,228,.5)]
+                        px-6
+                        py-3
+                        transition
+                        duration-200
+                        ease-in
+                        hover:bg-lightBlue
+                        hover:text-white"
+                    >
+                        { 
+                            translation.read_more 
+                        }
+                    </span>
+                </Link>
+            </div>
+        </section>
+    );
 }
 
 export default LastNews;

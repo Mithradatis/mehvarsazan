@@ -88,13 +88,21 @@ const Gallery = async ({language}: {language: LanguageType}) => {
             before:bg-no-repeat
             before:bg-center
             before:bg-contain
-            before:-z-10"
+            before:-z-10
+            lg:after:absolute
+            lg:after:left-1/2
+            lg:after:top-[-16px]
+            lg:after:-translate-x-1/2
+            lg:after:w-[20px]
+            lg:after:h-[20px]
+            lg:after:rounded-full
+            lg:after:border-4
+            lg:after:border-lightBlue"
         >
             <div className="hidden lg:block h-[200px] mb-4">
                 <div className="
                     dashed-line 
-                    mx-auto 
-                    mt-[-6rem] 
+                    mx-auto  
                     has-arrow-after 
                     hidden md:block"
                 ></div>
