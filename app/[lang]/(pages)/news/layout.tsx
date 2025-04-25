@@ -12,6 +12,9 @@ import languages from "@/lib/language";
 import { LayoutParams } from "@/types/page-params";
 import { ModalProvider } from "@/hooks/useModal";
 import Modal from "@/components/Partials/Modal";
+import { Suspense } from "react";
+import Loading from "@/components/Globals/Loading";
+import NavigationLoading from "@/components/Globals/NavigationLoading";
 
 type Props = {
   children: React.ReactNode;
@@ -33,25 +36,28 @@ export default async function RootLayout({
         className="flex flex-col"
         style={{ minHeight: '100vh' }}
       >
-        <ModalProvider>
-          {isEnabled && <PreviewNotice />}
-          <Modal />
-          <Header
-            currentLanguage={lang}
-          />
-          <main className="
-          flex-1 
-          flex 
-          items-stretch 
-          bg-gradient-to-r 
-          from-slate-200 
-          to-white">
-            {children}
-          </main>
-          <Footer
-            currentLanguage={lang}
-          />
-        </ModalProvider>
+        <Suspense fallback={<Loading />}>
+          <ModalProvider>
+            <NavigationLoading />
+            {isEnabled && <PreviewNotice />}
+            <Modal />
+            <Header
+              currentLanguage={lang}
+            />
+            <main className="
+            flex-1 
+            flex 
+            items-stretch 
+            bg-gradient-to-r 
+            from-slate-200 
+            to-white">
+              {children}
+            </main>
+            <Footer
+              currentLanguage={lang}
+            />
+          </ModalProvider>
+        </Suspense>
       </body>
     </html>
   );
