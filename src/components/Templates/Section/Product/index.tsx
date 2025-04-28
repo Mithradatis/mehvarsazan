@@ -2,23 +2,31 @@
 
 import Image from "next/image";
 import ProductsVideoThumbnail from "@/assets/images/products-video.png";
-import { useModal } from "@/hooks/useModal";
 import BeveledLabel from "@/components/Globals/BeveledLabel";
 import { motion } from "motion/react";
 import { LanguageType } from "@/types/language";
 import Translation from "@/types/translation";
+import { useState } from "react";
 
 const Product = (
-    { 
-        language, 
-        translation 
-    }: { 
-        language: LanguageType, 
-        translation: Translation 
+    {
+        language,
+        translation
+    }: {
+        language: LanguageType,
+        translation: Translation
     }
 ) => {
-    const { handleOpen } = useModal();
+    const [isPlaying, setIsPlaying] = useState(false);
     const pathLength = 100;
+
+    const handlePlay = () => {
+        setIsPlaying(true);
+    };
+
+    const handleClose = () => {
+        setIsPlaying(false);
+    };
 
     return <section
         dir="rtl"
@@ -111,7 +119,8 @@ const Product = (
                         />
                     </h3>
                 </div>
-                <div className="
+                <div
+                    className={`
                     2xl:absolute 
                     relative 
                     flex-1 
@@ -119,38 +128,55 @@ const Product = (
                     items-center 
                     justify-center 
                     z-10 
-                    2xl:py-24 
-                    pt-4
-                    pb-12
                     mx-auto 
                     end-0 
-                    start-0"
+                    start-0
+                    transition-all
+                    duration-300
+                    ${isPlaying
+                            ? `w-[675px] 
+                            h-[360px] 
+                            rounded-2xl 
+                            overflow-hidden 
+                            2xl:top-[6rem] 
+                            top-[2rem]
+                            border-[5px] 
+                            border-[rgba(127_193_228_.8)]`
+                            : `pt-4 pb-12 2xl:py-24`}
+                    `}
                 >
-                    <Image
-                        className="min-w-3/4 md:min-w-[350px] xl:w-[350px] mx-auto"
-                        src={ProductsVideoThumbnail}
-                        alt={"Products"}
-                    />
-                    <div
-                        className="play absolute cursor-pointer"
-                        onClick={() => handleOpen(
-                            {
-                                title: "محصولات",
-                                content: (
-                                    <video
-                                        className="w-full h-full"
-                                        controls
-                                        autoPlay
-                                    >
-                                        <source src={`/reera.mp4`} type="video/mp4" />
-                                    </video>
-                                )
-                            }
-                        )}
-                    >
-                        <span className="play-icon"></span>
-                        <span className="play-icon-1"></span>
-                    </div>
+                    {
+                        isPlaying ?
+                            <video
+                                className="w-full h-full object-cover"
+                                controls
+                                autoPlay
+                                onEnded={handleClose}
+                            >
+                                <source src={`/reera.mp4`} type="video/mp4" />
+                            </video> :
+                            <>
+                                <Image
+                                    className="
+                                        min-w-3/4 
+                                        md:min-w-[350px] 
+                                        xl:w-[350px] 
+                                        mx-auto
+                                        transition-all
+                                        duration-300
+                                    "
+                                    src={ProductsVideoThumbnail}
+                                    alt={"Products"}
+                                />
+                                <div
+                                    className="play absolute cursor-pointer"
+                                    onClick={handlePlay}
+                                >
+                                    <span className="play-icon"></span>
+                                    <span className="play-icon-1"></span>
+                                </div>
+                            </>
+                    }
                 </div>
                 <div className={`
                     relative 
@@ -160,7 +186,11 @@ const Product = (
                     text-center
                     ${language === 'fa' ? '2xl:float-end' : '2xl:float-start'}`}
                 >
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 250" className="hidden 2xl:block">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 350 250"
+                        className="hidden 2xl:block"
+                    >
                         <defs>
                             <path id="path2" strokeWidth="2" strokeLinecap="round"
                                 d="M 270 125 

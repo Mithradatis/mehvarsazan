@@ -130,8 +130,9 @@ const LastNews = async (
                                 <Link href={post.node.slug}>
                                     <div className={`
                                     relative 
+                                    flex
+                                    items-center
                                     z-20
-                                    min-h-48
                                     xl:h-48
                                     h-auto 
                                     overflow-hidden
@@ -150,7 +151,7 @@ const LastNews = async (
                                             width={350}
                                             height={200}
                                             quality={100}
-                                            className="relative z-20 w-full h-full"
+                                            className="relative z-20 w-full h-auto"
                                         />
                                     </div>
                                     <div className={`
