@@ -57,25 +57,50 @@ const BlockRenderer = ({ blocks }: { blocks: any }) => {
         if (block.props.className?.includes('wp-block-gallery')) {
           return (
             <SwiperSlider
-              key={block.key} 
+              key={block.key}
               images={block.props.children}
               options={
-                { 
-                  modules: { 
-                    hasNavigation: true, 
-                    hasPagination: true, 
-                    hasAutoplay: true 
-                  } 
+                {
+                  modules: {
+                    hasNavigation: true,
+                    hasPagination: true,
+                    hasAutoplay: true
+                  }
                 }
-              } 
+              }
             />
           );
         }
 
+        if (!block?.props?.children) {
+          return null;
+        }
+
         return (
           <figure key={block.key} className={block.props.className}>
-            {block.props.children.map((child: any, index: number) => renderBlock({ ...child, key: index }))}
+            {Array.isArray(block.props.children)
+              ? block.props.children.map((child: any, index: number) =>
+                renderBlock({ ...child, key: index })
+              )
+              : renderBlock({ ...block.props.children, key: 'single-child' })
+            }
           </figure>
+        );
+
+      case 'video':
+        return (
+          <video
+            key={block.key}
+            src={block.props.src}
+            controls
+            autoPlay
+            muted
+            playsInline
+            className="w-full h-auto rounded-lg"
+            preload="metadata"
+          >
+            Your browser does not support the video tag.
+          </video>
         );
 
       case 'img':

@@ -2,7 +2,7 @@ import { print } from "graphql/language/printer";
 import { ContentNode, Page } from "@/gql/graphql";
 import { fetchGraphQL } from "@/utils/fetchGraphQL";
 import { PageQuery } from "./PageQuery";
-import ReactHtmlParser from "react-html-parser";
+import parse from 'html-react-parser';
 import BlockRenderer from "@/components/Globals/BlockRenderer";
 
 import SocialIcons from "@/components/Globals/SocialIcons";
@@ -86,7 +86,7 @@ export default async function PageTemplate(
             >
                 <BlockRenderer 
                   blocks={
-                    ReactHtmlParser(
+                    parse(
                       page?.content || ''
                     )
                   } 

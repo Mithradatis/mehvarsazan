@@ -2,7 +2,7 @@ import { print } from "graphql/language/printer";
 import { ContentNode, Post } from "@/gql/graphql";
 import { fetchGraphQL } from "@/utils/fetchGraphQL";
 import { PostQuery } from "./PostQuery";
-import ReactHtmlParser from "react-html-parser";
+import parse from 'html-react-parser';
 import BlockRenderer from "@/components/Globals/BlockRenderer";
 
 import SocialIcons from "@/components/Globals/SocialIcons";
@@ -14,9 +14,14 @@ interface TemplateProps {
   language: LanguageType
 }
 
-export default async function PostTemplate({ node, language }: TemplateProps) {
+export default async function PostTemplate(
+  {
+    node,
+    language
+  }: TemplateProps
+) {
   const { post }: any = await fetchGraphQL<{ post: Post }>(
-    print(PostQuery), 
+    print(PostQuery),
     {
       id: node.databaseId,
     }
@@ -75,15 +80,19 @@ export default async function PostTemplate({ node, language }: TemplateProps) {
                 post?.title || ''
               }
             </h1>
-            <div className="">
-              <Image 
-                src={post?.featuredImage?.node?.sourceUrl || ''} 
+            {
+              post?.featuredImage?.node?.sourceUrl &&
+              <Image
+                src={post?.featuredImage?.node?.sourceUrl || ''}
                 alt={post?.featuredImage?.node?.altText || ''}
                 width={500}
                 height={500}
-                style={{ width: '100%', height: 'auto' }}
+                style={{
+                  width: '100%',
+                  height: 'auto'
+                }}
               />
-            </div>
+            }
             <div className="
               py-8 
               text-lg 
@@ -91,7 +100,7 @@ export default async function PostTemplate({ node, language }: TemplateProps) {
               id="post-content"
             >
                 <BlockRenderer 
-                  blocks={ReactHtmlParser(post?.content || '')} 
+                  blocks={parse(post?.content || '')} 
                 />
             </div>
           </div>
@@ -110,7 +119,7 @@ export default async function PostTemplate({ node, language }: TemplateProps) {
       lg:block
     ">
       <div className="sticky top-[30px]">
-        
+
       </div>
     </div>
   </div>;

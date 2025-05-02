@@ -1,4 +1,4 @@
-import ReactHtmlParser from 'react-html-parser';
+import parse from 'html-react-parser';
 import sanitizeHtml from 'sanitize-html';
 
 const sanitizerConfig = { 
@@ -8,7 +8,7 @@ const sanitizerConfig = {
 
 const parseHTML = ( rawHtml: string ) => {
     const sanitizedHtml = sanitizeHtml(rawHtml, sanitizerConfig); 
-    const parsedHtml = ReactHtmlParser(sanitizedHtml);
+    const parsedHtml = parse(sanitizedHtml);
 
     return parsedHtml;
 }
