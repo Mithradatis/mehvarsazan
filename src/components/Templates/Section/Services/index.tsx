@@ -47,7 +47,7 @@ const Services = ({language}: {language: LanguageType}) => {
             },
             link: {
                 en:'tenders',
-                fa:'مزایدات-و-مناقصات'
+                fa:'مزایدات'
             },
             target: '_self'
         },

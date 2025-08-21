@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { print } from "graphql/language/printer";
-import { setSeoData } from "@/utils/seoData";
 import { fetchGraphQL } from "@/utils/fetchGraphQL";
 import { ContentNode } from "@/gql/graphql";
 import { nextSlugToWpSlug } from "@/utils/nextSlugToWpSlug";
@@ -137,7 +136,7 @@ export default async function Page({ params }: Props) {
                                     }
                                 </div>
                                 <Form
-                                    formId="487"
+                                    formId="910"
                                 />
                             </div>
                         </div>
@@ -156,9 +155,7 @@ export default async function Page({ params }: Props) {
                 hidden
                 lg:block
             ">
-                <div className="sticky top-[30px]">
-
-                </div>
+                <div className="sticky top-[30px]"></div>
             </div>
         </div>
     );

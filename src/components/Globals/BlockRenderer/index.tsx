@@ -1,6 +1,5 @@
 import { ReactNode } from 'react';
 import SwiperSlider from '@/components/Globals/SwiperSlider';
-import { Autoplay } from 'swiper/modules';
 
 interface HeadingProps {
   level: string;
@@ -35,11 +34,11 @@ const TableCell = ({ type = 'td', className, children, colspan }: TableCellProps
 
   return (
     <Tag
-      className={`border border-gray-200 p-2 ${className} ${type === 'th' ? 'font-bold bg-gray-50' : ''}`}
+      className={`border border-gray-200 p-2 ${className || ''} ${type === 'th' ? 'font-bold bg-gray-50' : ''}`}
       colSpan={colspan}
     >
       {Array.isArray(children)
-        ? children.map((child, index) => {
+        ? children.map((child) => {
           if (typeof child === 'string') return child;
           if (child?.type === 'strong') return child.props.children;
           if (child?.props?.children) return child.props.children;
@@ -142,20 +141,46 @@ const BlockRenderer = ({ blocks }: { blocks: any }) => {
         );
 
       case 'table':
-        {           
+        {
           return (
-          <table key={block.key} className="min-w-full border-collapse border border-gray-200">
-            {block.props.children.props.children.map((child: object, index: number) => renderBlock({ ...child, key: index }))}
-          </table>
-        ) 
-      };
+            <table
+              key={block.key}
+              className="min-w-full border-collapse border border-gray-200"
+            >
+              {
+                Array.isArray(block.props.children)
+                  ? block.props.children.map((child: any, index: number) =>
+                    renderBlock(
+                      {
+                        ...child,
+                        key: index
+                      }
+                    )
+                  )
+                  : renderBlock(
+                    {
+                      ...block.props.children,
+                      key: 'only-child'
+                    }
+                  )
+              }
+            </table>
+          )
+        };
 
-      case 'thead':
+      case 'thead': {
+        const childrenArray = Array.isArray(block.props.children)
+          ? block.props.children
+          : [block.props.children];
+
         return (
-          <thead key={block.key} className="bg-gray-50">
-            {block.props.children.map((child: object, index: number) => renderBlock({ ...child, key: index }))}
+          <thead key={block.key}>
+            {childrenArray.map((child: any, index: number) =>
+              renderBlock({ ...child, key: index })
+            )}
           </thead>
         );
+      }
 
       case 'tbody':
         return (
@@ -177,7 +202,7 @@ const BlockRenderer = ({ blocks }: { blocks: any }) => {
           <TableCell
             key={block.key}
             type={block.type}
-            className={`${block.props.className} ${block.type === 'th' ? 'font-bold' : ''}`}
+            className={`${block.props.className} ${block.type === 'th' ? 'font-bold bg-blue-700 text-white text-center' : ''}`}
           >
             {block.props.children}
           </TableCell>

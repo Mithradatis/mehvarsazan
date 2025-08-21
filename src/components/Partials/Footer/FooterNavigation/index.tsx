@@ -1,5 +1,5 @@
 import { print } from "graphql/language/printer";
-import { MenuItem, RootQueryToMenuItemConnection } from "@/gql/graphql";
+import { MenuItem } from "@/gql/graphql";
 import { fetchGraphQL } from "@/utils/fetchGraphQL";
 import gql from "graphql-tag";
 import Link from "next/link";
