@@ -13,7 +13,7 @@ import { PageParams } from "@/types/page-params";
 export async function generateMetadata(): Promise<Metadata> {
   return {
     title: "محورسازان ایران خودرو",
-    description: "This is a customized homepage for my Next.js website.",
+    description: "ساخت محور جلو و عقب خودرو",
     icons: {
       icon: "/favicon.png",
     },

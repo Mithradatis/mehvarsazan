@@ -13,7 +13,7 @@ import { fetchTranslations } from "@/app/api/translation/translationsFetcher";
 async function getLatestPosts() {
     const LatestPostsQuery = gql`
         query LatestPosts {
-            posts(last: 3) {
+            posts(first: 3) {
                 edges {
                     node {
                         id
@@ -129,30 +129,34 @@ const LastNews = async (
                             >
                                 <Link href={post.node.slug}>
                                     <div className={`
-                                    relative 
-                                    flex
-                                    items-center
-                                    z-20
-                                    xl:h-48
-                                    h-auto 
-                                    overflow-hidden
-                                    ${index !== 0 ? index !== 2 ? 'md:rounded-2xl' : 'md:rounded-bl-2xl' : 'md:rounded-br-2xl'}`
-                                    }>
-                                        <Image
-                                            src={
-                                                await getThumbnailUrl(
-                                                    post.node.featuredImage.node.sourceUrl,
-                                                    300,
-                                                    post.node.featuredImage.node.mediaDetails.width,
-                                                    post.node.featuredImage.node.mediaDetails.height
-                                                )
-                                            }
-                                            alt={post.node.title}
-                                            width={350}
-                                            height={200}
-                                            quality={100}
-                                            className="relative z-20 w-full h-auto"
-                                        />
+                                        relative 
+                                        flex
+                                        items-center
+                                        z-20
+                                        xl:h-48
+                                        h-auto 
+                                        overflow-hidden
+                                        ${index !== 0 ? index !== 2 ? 'md:rounded-2xl' : 'md:rounded-bl-2xl' : 'md:rounded-br-2xl'}`
+                                    }
+                                    >
+                                        {
+                                            post.node.featuredImage &&
+                                            <Image
+                                                src={
+                                                    await getThumbnailUrl(
+                                                        post.node.featuredImage.node.sourceUrl,
+                                                        300,
+                                                        post.node.featuredImage.node.mediaDetails.width,
+                                                        post.node.featuredImage.node.mediaDetails.height
+                                                    )
+                                                }
+                                                alt={post.node.title}
+                                                width={350}
+                                                height={200}
+                                                quality={100}
+                                                className="relative z-20 w-full h-auto"
+                                            />
+                                        }
                                     </div>
                                     <div className={`
                                         md:w-[calc(100%-1rem)] 
@@ -186,10 +190,10 @@ const LastNews = async (
                 </div>
             </div>
             <div className="text-center mt-10 lg:mt-0">
-                <Link 
+                <Link
                     href="/news"
                 >
-                    <span 
+                    <span
                         className="
                         font-bold
                         text-xl
@@ -205,8 +209,8 @@ const LastNews = async (
                         hover:bg-lightBlue
                         hover:text-white"
                     >
-                        { 
-                            translation.read_more 
+                        {
+                            translation.read_more
                         }
                     </span>
                 </Link>

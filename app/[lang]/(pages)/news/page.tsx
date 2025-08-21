@@ -87,10 +87,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         return notFound();
     }
 
-    const metadata = setSeoData({ seo: contentNode.seo });
-
     return {
-        ...metadata,
+        title: "اخبار",
         alternates: {
             canonical: `${process.env.NEXT_PUBLIC_BASE_URL}${slug}`,
         }

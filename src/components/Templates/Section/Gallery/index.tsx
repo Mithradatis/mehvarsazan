@@ -5,7 +5,6 @@ import { getThumbnailUrl } from "@/utils/imageHandler";
 import { extractBlockFromBlocks } from "@/utils/blocksHandler";
 import Image from "next/image";
 import LogoSimple from "@/assets/logos/logo-simple.png";
-import GalleryBackgroundImage from "@/assets/backgrounds/geometric-shapes.png";
 import BeveledLabel from "@/components/Globals/BeveledLabel";
 import { LanguageType } from "@/types/language";
 import Translation from "@/types/translation";
@@ -84,7 +83,6 @@ const Gallery = async ({language}: {language: LanguageType}) => {
             lg:before:w-[70%]
             before:w-full
             before:h-[130%]
-            before:bg-[url(/assets/background/geometric-shapes.png)]
             before:bg-no-repeat
             before:bg-center
             before:bg-contain

@@ -142,11 +142,13 @@ const BlockRenderer = ({ blocks }: { blocks: any }) => {
         );
 
       case 'table':
-        return (
+        {           
+          return (
           <table key={block.key} className="min-w-full border-collapse border border-gray-200">
-            {block.props.children.map((child: object, index: number) => renderBlock({ ...child, key: index }))}
+            {block.props.children.props.children.map((child: object, index: number) => renderBlock({ ...child, key: index }))}
           </table>
-        );
+        ) 
+      };
 
       case 'thead':
         return (

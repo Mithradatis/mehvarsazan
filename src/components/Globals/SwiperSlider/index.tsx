@@ -26,6 +26,10 @@ const SwiperSlider = (
   options?.modules?.hasPagination && modules.push(Pagination);
   options?.autoplay?.delay && modules.push(Autoplay);
 
+  const validImages = images.filter((image: any) => 
+    image?.props?.children?.props.src || image?.attributes?.url
+  );
+
   return (
     <>
       {
@@ -95,25 +99,25 @@ const SwiperSlider = (
         className="h-auto flex max-h-[85vh]"
       >
         {
-          images.map((image: any, index: number) => (
-            <SwiperSlide key={index} className="w-full h-auto object-cover mx-0">
+          validImages.map((image: any, index: number) => (
+            <SwiperSlide key={`slide-${index}`} className="w-full h-auto object-cover mx-0">
               <figure className="h-full lg:h-full flex">
                 <img
-                  src={image?.props?.children[0].props.src || image?.attributes?.url}
-                  alt={image?.props?.children[0].props.alt || image?.attributes?.alt || image?.attributes?.title}
+                  src={image?.props?.children?.props.src || image?.attributes?.url}
+                  alt={image?.props?.children?.props.alt || image?.attributes?.alt || image?.attributes?.title}
                   className="w-full h-auto"
                   width={
-                    image?.props?.children[0].props.width || '100%'
+                    image?.props?.children?.props.width || '100%'
                   }
                   height={
-                    image?.props?.children[0].props.height || 'auto'
+                    image?.props?.children?.props.height || 'auto'
                   }
                   loading="lazy"
                   srcSet={
-                    image?.props?.children[0].props.srcSet || []
+                    image?.props?.children?.props.srcSet || []
                   }
                   sizes={
-                    image?.props?.children[0].props.sizes || []
+                    image?.props?.children?.props.sizes || []
                   }
                 />
               </figure>

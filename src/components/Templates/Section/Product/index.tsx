@@ -133,6 +133,7 @@ const Product = (
                     start-0
                     transition-all
                     duration-300
+                    max-w-full
                     ${isPlaying
                             ? `w-[675px] 
                             h-[360px] 
