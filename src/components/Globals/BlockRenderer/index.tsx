@@ -202,7 +202,7 @@ const BlockRenderer = ({ blocks }: { blocks: any }) => {
           <TableCell
             key={block.key}
             type={block.type}
-            className={`${block.props.className} ${block.type === 'th' ? 'font-bold bg-blue-700 text-white text-center' : ''}`}
+            className={`${block.props.className} ${block.type === 'th' ? 'font-bold bg-sky-600 text-white text-center' : ''}`}
           >
             {block.props.children}
           </TableCell>
