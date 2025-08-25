@@ -11,7 +11,8 @@ interface TableCellProps {
   type?: 'td' | 'th';
   className?: string;
   children?: ReactNode;
-  colspan?: number;
+  colSpan?: number;
+  rowSpan?: number;
 }
 
 const Heading = ({ level, className, children }: HeadingProps) => {
@@ -29,22 +30,15 @@ const Paragraph = ({ className, children }: { className: string, children: React
   </p>
 );
 
-const TableCell = ({ type = 'td', className, children, colspan }: TableCellProps) => {
+const TableCell = ({ type = 'td', className, children, colSpan, rowSpan }: TableCellProps) => {
   const Tag = type as 'td' | 'th';
-
   return (
     <Tag
-      className={`border border-gray-200 p-2 ${className || ''} ${type === 'th' ? 'font-bold bg-gray-50' : ''}`}
-      colSpan={colspan}
+      className={`border border-gray-200 p-2 ${className || ''} ${type === 'th' ? 'font-bold bg-sky-600 text-white text-center' : ''}`}
+      colSpan={colSpan}
+      rowSpan={rowSpan}
     >
-      {Array.isArray(children)
-        ? children.map((child) => {
-          if (typeof child === 'string') return child;
-          if (child?.type === 'strong') return child.props.children;
-          if (child?.props?.children) return child.props.children;
-          return child;
-        })
-        : children}
+      {children}
     </Tag>
   );
 };
@@ -182,31 +176,52 @@ const BlockRenderer = ({ blocks }: { blocks: any }) => {
         );
       }
 
-      case 'tbody':
+      case 'tbody': {
+        const childrenArray = Array.isArray(block.props.children)
+          ? block.props.children
+          : [block.props.children];
+
         return (
           <tbody key={block.key}>
-            {block.props.children.map((child: object, index: number) => renderBlock({ ...child, key: index }))}
+            {childrenArray.map((child: any, index: number) =>
+              renderBlock({ ...child, key: index })
+            )}
           </tbody>
         );
+      }
 
-      case 'tr':
+      case 'tr': {
+        const childrenArray = Array.isArray(block.props.children)
+          ? block.props.children
+          : [block.props.children];
+
         return (
           <tr key={block.key}>
-            {block.props.children.map((child: object, index: number) => renderBlock({ ...child, key: index }))}
+            {childrenArray.map((child: any, index: number) =>
+              renderBlock({ ...child, key: index })
+            )}
           </tr>
         );
+      }
 
       case 'td':
-      case 'th':
+      case 'th': {
+        const toNum = (v: unknown) => (v === undefined || v === null ? undefined : Number(v));
+        const colSpan = toNum(block.props.colSpan ?? block.props.colspan);
+        const rowSpan = toNum(block.props.rowSpan ?? block.props.rowspan);
+
         return (
           <TableCell
             key={block.key}
             type={block.type}
             className={`${block.props.className} ${block.type === 'th' ? 'font-bold bg-sky-600 text-white text-center' : ''}`}
+            colSpan={colSpan}
+            rowSpan={rowSpan}
           >
             {block.props.children}
           </TableCell>
         );
+      }
 
       case 'strong':
         return block.props.children;
