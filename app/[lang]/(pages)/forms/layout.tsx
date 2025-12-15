@@ -9,7 +9,6 @@ import Header from "@/components/Partials/Header/PageHeader";
 import Footer from "@/components/Partials/Footer";
 
 import languages from "@/lib/language";
-import { LayoutParams } from "@/types/page-params";
 import { ModalProvider } from "@/hooks/useModal";
 import Modal from "@/components/Partials/Modal";
 import { Suspense } from "react";
@@ -17,15 +16,10 @@ import Loading from "@/components/Globals/Loading";
 import NavigationLoading from "@/components/Globals/NavigationLoading";
 import { ApolloWrapper } from "@/components/Providers/ApolloProvider";
 
-
-type Props = {
-  children: React.ReactNode;
-  params: Promise<LayoutParams>;
-}
 export default async function RootLayout({
   children,
   params
-}: Props) {
+}: TLayoutProps) {
   const resolvedParams = await params;
   const lang = resolvedParams.lang;
   const dir = languages[lang]?.dir || 'ltr';

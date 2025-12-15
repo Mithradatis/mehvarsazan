@@ -15,17 +15,11 @@ import Modal from "@/components/Partials/Modal";
 import { ModalProvider } from "@/hooks/useModal";
 import Loading from "@/components/Globals/Loading";
 import NavigationLoading from "@/components/Globals/NavigationLoading";
-import { LayoutParams } from "@/types/page-params";
-
-type Props = {
-  children: React.ReactNode;
-  params: Promise<LayoutParams>;
-}
 
 export default async function RootLayout({
   children,
   params
-}: Props) {
+}: TLayoutProps) {
   const { lang } = await params;
   const dir = languages[lang]?.dir || 'ltr';
   const { isEnabled } = await draftMode();
