@@ -1,6 +1,6 @@
 type TLayoutProps = {
     children: React.ReactNode;
-    params: {
+    params: Promise<{
         lang: LanguageType;
-    };
+    }>;
 }

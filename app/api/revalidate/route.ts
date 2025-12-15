@@ -28,7 +28,7 @@ export async function GET(request: NextRequest) {
       }
 
       if (tags && tags.length > 0) {
-        await Promise.all(tags.map((tag) => revalidateTag(tag)));
+        await Promise.all(tags.map((tag) => revalidateTag(tag, 'default')));
         console.log("Revalidated tags:", tags);
       }
 
