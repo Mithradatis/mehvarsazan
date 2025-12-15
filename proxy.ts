@@ -4,7 +4,7 @@ import languages from "./lib/language";
 
 const defaultLanguage = 'fa';
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
   
   const pathnameHasValidLocale = Object.keys(languages).some(
